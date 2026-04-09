@@ -32,7 +32,14 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center px-6 pt-56 md:pt-64 pb-48 md:pb-56">
+    <section
+      id="proceso"
+      className="relative z-10 w-full flex flex-col items-center px-6"
+      style={{
+        paddingTop: "clamp(80px, 5rem, 100px)",
+        paddingBottom: "clamp(80px, 5rem, 100px)",
+      }}
+    >
       {/* Section label */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"
@@ -48,12 +55,12 @@ export default function ProcessSection() {
           PROCESO
         </span>
         <h2
-          className="text-white font-bold mt-4"
+          className="font-bold mt-4"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
-            fontSize: "clamp(28px, 5vw, 48px)",
-            letterSpacing: "-1.5px",
-            background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 30%, #ffffff 70%, rgba(255,255,255,0.2) 100%)",
+            fontSize: "clamp(24px, 4vw, 42px)",
+            letterSpacing: "-2px",
+            backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -82,7 +89,7 @@ export default function ProcessSection() {
             <div className="flex-shrink-0 flex flex-col items-center">
               {/* Number circle */}
               <motion.div
-                className="w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center relative"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center relative"
                 style={{
                   background: "linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06))",
                   border: "1px solid rgba(255,255,255,0.18)",
@@ -124,7 +131,7 @@ export default function ProcessSection() {
                   className="text-white font-bold relative z-10"
                   style={{
                     fontFamily: "'Sulphur Point', sans-serif",
-                    fontSize: "clamp(18px, 2.5vw, 24px)",
+                    fontSize: "clamp(14px, 1.5vw, 16px)",
                   }}
                 >
                   {step.number}
@@ -155,11 +162,15 @@ export default function ProcessSection() {
             {/* Content column */}
             <div className="flex-1 pb-4">
               <motion.h3
-                className="text-white font-bold mb-5"
+                className="font-bold mb-5"
                 style={{
                   fontFamily: "'Sulphur Point', sans-serif",
-                  fontSize: "clamp(24px, 4vw, 36px)",
-                  letterSpacing: "-1px",
+                  fontSize: "clamp(22px, 3.5vw, 30px)",
+                  letterSpacing: "-0.8px",
+                  backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.3) 0%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0.3) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -177,8 +188,8 @@ export default function ProcessSection() {
                 className="text-[#c8c5c5] leading-relaxed"
                 style={{
                   fontFamily: "'Roboto Condensed', sans-serif",
-                  fontSize: "clamp(15px, 2vw, 18px)",
-                  lineHeight: "1.7",
+                  fontSize: "clamp(16px, 2vw, 19px)",
+                  lineHeight: "1.8",
                 }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}

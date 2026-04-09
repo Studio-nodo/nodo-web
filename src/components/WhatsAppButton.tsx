@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
-  const whatsappNumber = "5491112345678"; // Reemplazar con número real
+  const whatsappNumber = "542396511845"; 
   const message = encodeURIComponent(
     "Hola! Me gustaría consultar sobre sus servicios de desarrollo web y diseño."
   );

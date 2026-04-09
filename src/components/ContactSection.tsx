@@ -28,8 +28,15 @@ const contacts = [
 
 export default function ContactSection() {
   return (
-    <section className="relative z-10 w-full px-6 py-40 md:py-48 flex flex-col items-center">
-      {/* NOSOTROS label */}
+    <section
+      id="contacto"
+      className="relative z-10 w-full px-6 flex flex-col items-center"
+      style={{
+        paddingTop: "clamp(80px, 5rem, 100px)",
+        paddingBottom: "clamp(120px, 7.5rem, 150px)",
+      }}
+    >
+      {/* CONTACTO label */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -44,12 +51,12 @@ export default function ContactSection() {
           CONTACTO
         </span>
         <h2
-          className="text-white font-bold mt-4"
+          className="font-bold mt-4"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
-            fontSize: "clamp(28px, 5vw, 48px)",
-            letterSpacing: "-1.5px",
-            background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 30%, #ffffff 70%, rgba(255,255,255,0.2) 100%)",
+            fontSize: "clamp(24px, 4vw, 42px)",
+            letterSpacing: "-2px",
+            backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",

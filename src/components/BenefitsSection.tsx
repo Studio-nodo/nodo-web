@@ -70,7 +70,14 @@ const benefits = [
 
 export default function BenefitsSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center px-6 pt-48 md:pt-56 pb-56 md:pb-64">
+    <section
+      id="beneficios"
+      className="relative z-10 w-full flex flex-col items-center px-6"
+      style={{
+        paddingTop: "clamp(80px, 5rem, 100px)",
+        paddingBottom: "clamp(80px, 5rem, 100px)",
+      }}
+    >
       {/* Section label */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"
@@ -86,12 +93,12 @@ export default function BenefitsSection() {
           BENEFICIOS
         </span>
         <h2
-          className="text-white font-bold mt-4"
+          className="font-bold mt-4"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
-            fontSize: "clamp(28px, 5vw, 48px)",
-            letterSpacing: "-1.5px",
-            background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 30%, #ffffff 70%, rgba(255,255,255,0.2) 100%)",
+            fontSize: "clamp(24px, 4vw, 42px)",
+            letterSpacing: "-2px",
+            backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -102,35 +109,32 @@ export default function BenefitsSection() {
       </motion.div>
 
       {/* Benefits grid */}
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10">
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
         {benefits.map((benefit, index) => (
           <motion.div
             key={benefit.title}
-            className="relative p-10 md:p-12 rounded-2xl text-center"
+            className="relative p-10 md:p-12 text-center"
             style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03))",
-              border: "1px solid rgba(255,255,255,0.12)",
-              backdropFilter: "blur(12px)",
+              filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.4))",
             }}
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
+            initial={{ opacity: 0, y: 60, scale: 0.9, rotateX: -15 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{
-              duration: 0.9,
-              delay: index * 0.15,
+              duration: 1,
+              delay: index * 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
             whileHover={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))",
-              borderColor: "rgba(255,255,255,0.25)",
-              y: -6,
-              scale: 1.02,
-              boxShadow: "0 12px 40px rgba(0,0,0,0.3)",
+              y: -10,
+              scale: 1.03,
+              filter: "drop-shadow(0 32px 90px rgba(0,0,0,0.6))",
+              transition: { duration: 0.3 }
             }}
           >
             {/* Icon with glow */}
             <motion.div
-              className="mb-8 text-white relative flex justify-center"
+              className="mb-10 relative flex justify-center"
               initial={{ scale: 0.7, opacity: 0, rotate: -8 }}
               whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
               viewport={{ once: true }}
@@ -145,37 +149,41 @@ export default function BenefitsSection() {
                 <motion.div
                   className="absolute inset-0"
                   style={{
-                    background: "radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)",
-                    filter: "blur(20px)",
-                    transform: "scale(1.8)",
+                    background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)",
+                    filter: "blur(28px)",
+                    transform: "scale(2)",
                   }}
                   animate={{
-                    opacity: [0.5, 1, 0.5],
-                    scale: [1.6, 1.9, 1.6],
+                    opacity: [0.4, 0.8, 0.4],
+                    scale: [1.8, 2.2, 1.8],
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: index * 0.3,
+                    delay: index * 0.4,
                   }}
                 />
-                <div className="relative" style={{ opacity: 0.95 }}>{benefit.icon}</div>
+                <div className="relative text-white" style={{ opacity: 0.9 }}>{benefit.icon}</div>
               </div>
             </motion.div>
 
             {/* Title */}
             <motion.h3
-              className="text-white font-bold mb-5"
+              className="font-bold mb-6"
               style={{
                 fontFamily: "'Sulphur Point', sans-serif",
-                fontSize: "clamp(22px, 3vw, 28px)",
+                fontSize: "clamp(22px, 3vw, 26px)",
                 letterSpacing: "-0.8px",
+                backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.3) 0%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0.3) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 + 0.25 }}
+              transition={{ duration: 0.7, delay: index * 0.15 + 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
               {benefit.title}
             </motion.h3>
@@ -185,25 +193,16 @@ export default function BenefitsSection() {
               className="text-[#c8c5c5] leading-relaxed"
               style={{
                 fontFamily: "'Roboto Condensed', sans-serif",
-                fontSize: "clamp(15px, 1.8vw, 17px)",
-                lineHeight: "1.7",
+                fontSize: "clamp(15px, 2vw, 18px)",
+                lineHeight: "1.8",
               }}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 + 0.35 }}
+              transition={{ duration: 0.7, delay: index * 0.15 + 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               {benefit.description}
             </motion.p>
-
-            {/* Decorative corner accent */}
-            <div
-              className="absolute top-0 right-0 w-20 h-20 opacity-30 pointer-events-none"
-              style={{
-                background: "radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent)",
-                borderRadius: "0 12px 0 0",
-              }}
-            />
           </motion.div>
         ))}
       </div>

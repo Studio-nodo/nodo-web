@@ -2,9 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
-
-const imgNodo = "https://www.figma.com/api/mcp/asset/b41caea0-5f27-4d69-bc0b-8216837cf44d";
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null);
@@ -21,23 +18,6 @@ export default function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Logo top-left */}
-      <motion.div
-        className="absolute top-8 left-8 md:top-10 md:left-10 z-20"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-      >
-        <Image
-          src={imgNodo}
-          alt="Studio Nodo"
-          width={130}
-          height={58}
-          className="object-contain"
-          priority
-        />
-      </motion.div>
-
       {/* Contenido hero */}
       <motion.div
         className="relative z-10 text-center px-6 w-full max-w-3xl mx-auto mt-16"
@@ -51,7 +31,7 @@ export default function HeroSection() {
               fontFamily: "'Sulphur Point', sans-serif",
               fontSize: "clamp(18px, 3.8vw, 56px)",
               letterSpacing: "-2px",
-              background:
+              backgroundImage:
                 "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -71,7 +51,7 @@ export default function HeroSection() {
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(14px, 2vw, 22px)",
-            background:
+            backgroundImage:
               "linear-gradient(90deg, rgba(255,255,255,0) 5%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0) 95%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",

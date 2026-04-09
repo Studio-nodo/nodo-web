@@ -8,24 +8,6 @@ export default function AnimatedBackground() {
       className="fixed inset-0 pointer-events-none z-0"
       style={{ background: "#07080c" }}
     >
-      {/* ── IMAGEN BASE — fondo.png a pantalla completa ── */}
-      <motion.img
-        src="/fondo.png"
-        alt=""
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center",
-          mixBlendMode: "screen",
-        }}
-        animate={{ opacity: [0.12, 0.2, 0.12] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       {/* ── CAPA DE INTENSIFICACIÓN — refuerza el cruce de luz central ── */}
       <motion.div
         style={{

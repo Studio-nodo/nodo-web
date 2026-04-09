@@ -63,28 +63,39 @@ const categoryLabels: Record<number, string> = {
 
 export default function ServicesSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center px-6 pt-40 md:pt-48 pb-48 md:pb-56">
+    <section
+      id="servicios"
+      className="relative z-10 w-full flex flex-col items-center px-6"
+      style={{
+        paddingTop: "clamp(100px, 6.25rem, 128px)",
+        paddingBottom: "clamp(80px, 5rem, 100px)",
+      }}
+    >
       {/* Services header */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        <span
+        <motion.span
           className="text-xs md:text-sm tracking-[10px] text-white/35 uppercase font-light mb-4 block"
           style={{ fontFamily: "'Sulphur Point', sans-serif" }}
+          initial={{ opacity: 0, letterSpacing: "15px" }}
+          whileInView={{ opacity: 1, letterSpacing: "10px" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         >
           SERVICIOS
-        </span>
+        </motion.span>
         <h2
-          className="text-white font-bold mt-4"
+          className="font-bold mt-4"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
-            fontSize: "clamp(28px, 5vw, 48px)",
-            letterSpacing: "-1.5px",
-            background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 30%, #ffffff 70%, rgba(255,255,255,0.2) 100%)",
+            fontSize: "clamp(24px, 4vw, 42px)",
+            letterSpacing: "-2px",
+            backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",

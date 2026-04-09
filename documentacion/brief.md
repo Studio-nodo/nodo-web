@@ -8,7 +8,7 @@ Landing page corporativa para mostrar los servicios del studio y captar clientes
 
 ## Servicios principales
 1. **Landing Page** — Páginas de conversión optimizadas
-2. **E-Commerce** — Tiendas online con Mercado Pago / Stripe
+2. **E-Commerce** — Tiendas online con Mercado Pago 
 3. **Web Corporativa** — Sitios institucionales
 4. **Branding** — Diseño de identidad de marca
 5. **Logotipo** — Diseño de logos personalizados
@@ -22,7 +22,6 @@ Landing page corporativa para mostrar los servicios del studio y captar clientes
 - Vercel (deploy)
 
 ## Características especiales
-- Componentes 3D interactivos por servicio
 - SEO optimizado con structured data
 - Mobile-first responsive
 - Accesibilidad WCAG AA
@@ -34,3 +33,5 @@ PYMEs en Argentina que buscan:
 - E-commerce para vender online
 - Branding y diseño gráfico
 - Gestión de redes sociales
+- Automatizaciones
+- Agentes ia

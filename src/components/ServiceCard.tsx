@@ -12,6 +12,14 @@ interface ServiceCardProps {
   index: number;
 }
 
+const getMailtoLink = (serviceName: string) => {
+  const subject = encodeURIComponent(`Consulta sobre ${serviceName}`);
+  const body = encodeURIComponent(
+    `Hola,\n\nEstoy interesado en obtener más información sobre el servicio de ${serviceName}.\n\nGracias.`
+  );
+  return `mailto:mmartone@studio-nodo.com?subject=${subject}&body=${body}`;
+};
+
 const getImagePath = (title: string) => {
   switch (title) {
     case "LANDING PAGE":
@@ -44,22 +52,22 @@ export default function ServiceCard({
 
   return (
     <motion.div
-      className="relative w-full max-w-4xl mx-auto px-8 py-14 md:py-20"
-      initial={{ opacity: 0, y: 50 }}
+      className="relative w-full max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-20"
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* Layout: imagen + texto, alternando lados */}
       <div
-        className="flex flex-col items-center gap-8 md:gap-14"
+        className="flex flex-col items-center gap-10 md:gap-16"
         style={{
           flexDirection: "column",
         }}
       >
         {/* En desktop: fila alternada */}
         <div
-          className="hidden md:flex items-center gap-14 w-full"
+          className="hidden md:flex items-center justify-center gap-16 lg:gap-20 w-full"
           style={{ flexDirection: imageLeft ? "row" : "row-reverse" }}
         >
           {/* Imagen 3D */}
@@ -116,24 +124,23 @@ export default function ServiceCard({
 
           {/* Texto desktop */}
           <div
-            className="flex-1 min-w-0"
-            style={{ textAlign: imageLeft ? "left" : "right", maxWidth: "42ch" }}
+            className="flex-1 min-w-0 flex flex-col"
+            style={{ alignItems: imageLeft ? "flex-start" : "flex-end", maxWidth: "48ch" }}
           >
             <motion.h3
-              className="font-bold leading-none mb-3"
+              className="font-bold leading-none mb-5 text-center"
               style={{
                 fontFamily: "'Sulphur Point', sans-serif",
-                fontSize: "clamp(26px, 4vw, 48px)",
+                fontSize: "clamp(28px, 4.5vw, 52px)",
                 letterSpacing: "-2px",
-                background: imageLeft
-                  ? "linear-gradient(90deg, #ffffff 15%, rgba(255,255,255,0.1) 100%)"
-                  : "linear-gradient(270deg, #ffffff 15%, rgba(255,255,255,0.1) 100%)",
+                background: "linear-gradient(90deg, rgba(255,255,255,0.3) 0%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0.3) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                width: "100%",
               }}
-              initial={{ opacity: 0, x: imageLeft ? 30 : -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.25 }}
             >
@@ -141,12 +148,9 @@ export default function ServiceCard({
             </motion.h3>
 
             <motion.div
-              className="h-px mb-4"
+              className="h-px mb-6 w-full"
               style={{
-                background: imageLeft
-                  ? "linear-gradient(90deg, rgba(255,255,255,0.25) 0%, transparent 100%)"
-                  : "linear-gradient(270deg, rgba(255,255,255,0.25) 0%, transparent 100%)",
-                transformOrigin: imageLeft ? "left" : "right",
+                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.25) 50%, transparent)",
               }}
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -155,10 +159,10 @@ export default function ServiceCard({
             />
 
             <motion.p
-              className="text-[#c8c5c5] leading-relaxed"
+              className="text-[#c8c5c5] leading-relaxed mb-8 text-center w-full"
               style={{
                 fontFamily: "'Roboto Condensed', sans-serif",
-                fontSize: "clamp(14px, 1.5vw, 17px)",
+                fontSize: "clamp(15px, 1.8vw, 18px)",
               }}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -167,11 +171,39 @@ export default function ServiceCard({
             >
               {description}
             </motion.p>
+
+            {/* CTA Button Desktop */}
+            <motion.a
+              href={getMailtoLink(title)}
+              className="inline-block px-7 py-3 rounded-lg text-sm font-medium self-center"
+              style={{
+                fontFamily: "'Roboto Condensed', sans-serif",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08))",
+                border: "1px solid rgba(255,255,255,0.2)",
+                color: "#ffffff",
+                textDecoration: "none",
+                backdropFilter: "blur(10px)",
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.14))",
+                borderColor: "rgba(255,255,255,0.35)",
+                y: -3,
+                boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+                scale: 1.02,
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Solicitar presupuesto
+            </motion.a>
           </div>
         </div>
 
         {/* En mobile: siempre centrado, imagen arriba */}
-        <div className="flex md:hidden flex-col items-center gap-6 w-full text-center">
+        <div className="flex md:hidden flex-col items-center gap-8 w-full text-center">
           <motion.div
             className="relative"
             initial={{ opacity: 0, y: 20 }}
@@ -222,12 +254,12 @@ export default function ServiceCard({
             </div>
           </motion.div>
 
-          <div className="w-full">
+          <div className="w-full flex flex-col items-center">
             <motion.h3
-              className="font-bold leading-none mb-3 text-center"
+              className="font-bold leading-none mb-5 text-center"
               style={{
                 fontFamily: "'Sulphur Point', sans-serif",
-                fontSize: "clamp(26px, 7vw, 38px)",
+                fontSize: "clamp(28px, 7vw, 40px)",
                 letterSpacing: "-1.5px",
                 background:
                   "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 40%, #ffffff 60%, rgba(255,255,255,0.2) 100%)",
@@ -243,17 +275,25 @@ export default function ServiceCard({
               {title}
             </motion.h3>
 
-            <div
-              className="h-px mx-auto mb-3"
+            <motion.div
+              className="h-px mb-6"
               style={{
-                width: "60px",
-                background: "rgba(255,255,255,0.2)",
+                width: "80px",
+                background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
               }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15 }}
             />
 
             <motion.p
-              className="text-[#c8c5c5] text-[15px] leading-relaxed text-center mx-auto"
-              style={{ fontFamily: "'Roboto Condensed', sans-serif", maxWidth: "36ch" }}
+              className="text-[#c8c5c5] leading-relaxed text-center mx-auto mb-8"
+              style={{
+                fontFamily: "'Roboto Condensed', sans-serif",
+                fontSize: "clamp(15px, 4vw, 17px)",
+                maxWidth: "40ch"
+              }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -261,6 +301,33 @@ export default function ServiceCard({
             >
               {description}
             </motion.p>
+
+            {/* CTA Button Mobile */}
+            <motion.a
+              href={getMailtoLink(title)}
+              className="inline-block px-7 py-3 rounded-lg text-sm font-medium"
+              style={{
+                fontFamily: "'Roboto Condensed', sans-serif",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08))",
+                border: "1px solid rgba(255,255,255,0.2)",
+                color: "#ffffff",
+                textDecoration: "none",
+                backdropFilter: "blur(10px)",
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.14))",
+                borderColor: "rgba(255,255,255,0.35)",
+                scale: 1.04,
+                boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+              }}
+              whileTap={{ scale: 0.96 }}
+            >
+              Solicitar presupuesto
+            </motion.a>
           </div>
         </div>
       </div>

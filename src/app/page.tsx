@@ -1,9 +1,12 @@
 import AnimatedBackground from "@/components/AnimatedBackground";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import BenefitsSection from "@/components/BenefitsSection";
+import ProcessSection from "@/components/ProcessSection";
 import ContactSection from "@/components/ContactSection";
 import ParticleField from "@/components/ParticleField";
 import ScrollProgress from "@/components/ScrollProgress";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 
 const imgLogoNodo = "https://www.figma.com/api/mcp/asset/4454751b-41d9-4e84-937b-cfd950aad42d";
@@ -16,6 +19,9 @@ export default function Home() {
 
       {/* Partículas */}
       <ParticleField />
+
+      {/* WhatsApp floating button */}
+      <WhatsAppButton />
 
       {/* Fondo fijo */}
       <AnimatedBackground />
@@ -35,6 +41,8 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSection />
         <ServicesSection />
+        <BenefitsSection />
+        <ProcessSection />
         <ContactSection />
       </div>
     </main>

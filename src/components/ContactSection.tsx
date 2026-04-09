@@ -28,44 +28,68 @@ const contacts = [
 
 export default function ContactSection() {
   return (
-    <section className="relative z-10 w-full px-6 py-20 md:py-32 flex flex-col items-center">
+    <section className="relative z-10 w-full px-6 py-40 md:py-48 flex flex-col items-center">
       {/* NOSOTROS label */}
       <motion.div
-        className="text-center mb-12 w-full max-w-2xl"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        className="text-center mb-24 md:mb-32 w-full"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <span
-          className="text-xs md:text-sm tracking-[10px] text-white/35 uppercase font-light"
+          className="text-xs md:text-sm tracking-[10px] text-white/35 uppercase font-light mb-4 block"
           style={{ fontFamily: "'Sulphur Point', sans-serif" }}
         >
-          NOSOTROS
+          CONTACTO
         </span>
+        <h2
+          className="text-white font-bold mt-4"
+          style={{
+            fontFamily: "'Sulphur Point', sans-serif",
+            fontSize: "clamp(28px, 5vw, 48px)",
+            letterSpacing: "-1.5px",
+            background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 30%, #ffffff 70%, rgba(255,255,255,0.2) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Hablemos
+        </h2>
       </motion.div>
 
       {/* Contact cards */}
-      <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+      <div className="flex flex-col gap-6 md:gap-7 w-full max-w-4xl">
         {contacts.map((contact, index) => (
           <motion.a
             key={contact.text}
             href={contact.href}
             target={contact.isInstagram ? "_blank" : undefined}
             rel={contact.isInstagram ? "noopener noreferrer" : undefined}
-            className="glass flex items-center gap-6 px-8 py-5 group transition-all duration-300 cursor-pointer"
+            className="flex items-center gap-6 md:gap-8 px-8 md:px-10 py-6 md:py-7 rounded-2xl group cursor-pointer"
             style={{
               textDecoration: "none",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03))",
+              border: "1px solid rgba(255,255,255,0.12)",
+              backdropFilter: "blur(12px)",
             }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 * index }}
-            whileHover={{
-              backgroundColor: "rgba(137,133,133,0.25)",
-              y: -2,
-              boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+            transition={{
+              duration: 0.8,
+              delay: 0.15 * index,
+              ease: [0.16, 1, 0.3, 1],
             }}
+            whileHover={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06))",
+              borderColor: "rgba(255,255,255,0.25)",
+              y: -4,
+              scale: 1.01,
+              boxShadow: "0 12px 36px rgba(0,0,0,0.35)",
+            }}
+            whileTap={{ scale: 0.98 }}
           >
             {/* Icon */}
             <div className="flex-shrink-0 w-[56px] h-[56px] relative flex items-center justify-center">
@@ -80,18 +104,21 @@ export default function ContactSection() {
 
             {/* Text */}
             <span
-              className="text-white/80 group-hover:text-white transition-colors text-[clamp(16px,2.5vw,26px)] font-light tracking-tight"
-              style={{ fontFamily: "'Sulphur Point', sans-serif" }}
+              className="text-white/85 group-hover:text-white transition-colors font-light tracking-tight flex-1"
+              style={{
+                fontFamily: "'Sulphur Point', sans-serif",
+                fontSize: "clamp(17px, 2.8vw, 28px)",
+              }}
             >
               {contact.text}
             </span>
 
             {/* Arrow indicator */}
             <motion.div
-              className="ml-auto opacity-0 group-hover:opacity-100 text-white/60"
-              initial={{ x: -5 }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.2 }}
+              className="ml-auto opacity-0 group-hover:opacity-100 text-white/70 text-2xl"
+              initial={{ x: -10 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               →
             </motion.div>
@@ -101,12 +128,12 @@ export default function ContactSection() {
 
       {/* Copyright */}
       <motion.p
-        className="text-center text-white/20 text-xs mt-8 tracking-wider w-full max-w-2xl"
+        className="text-center text-white/25 text-sm mt-20 md:mt-24 tracking-wider w-full"
         style={{ fontFamily: "'Roboto Condensed', sans-serif" }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         © 2025 Studio Nodo. Todos los derechos reservados.
       </motion.p>

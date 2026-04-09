@@ -63,40 +63,52 @@ const categoryLabels: Record<number, string> = {
 
 export default function ServicesSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center">
-      {/* Services header pill */}
+    <section className="relative z-10 w-full flex flex-col items-center px-6 py-32 md:py-40">
+      {/* Services header */}
       <motion.div
-        className="flex justify-center pt-16 pb-16"
-        initial={{ opacity: 0, y: 30 }}
+        className="text-center mb-24 md:mb-32 w-full"
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="glass px-12 py-3">
-          <span
-            className="text-[#f5f8ff] text-[18px]"
-            style={{ fontFamily: "'Roboto Condensed', sans-serif" }}
-          >
-            Nuestros servicios
-          </span>
-        </div>
+        <span
+          className="text-xs md:text-sm tracking-[10px] text-white/35 uppercase font-light mb-4 block"
+          style={{ fontFamily: "'Sulphur Point', sans-serif" }}
+        >
+          SERVICIOS
+        </span>
+        <h2
+          className="text-white font-bold mt-4"
+          style={{
+            fontFamily: "'Sulphur Point', sans-serif",
+            fontSize: "clamp(28px, 5vw, 48px)",
+            letterSpacing: "-1.5px",
+            background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, #ffffff 30%, #ffffff 70%, rgba(255,255,255,0.2) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Nuestros servicios
+        </h2>
       </motion.div>
 
       {/* Services list */}
-      <div className="relative w-full flex flex-col items-center">
+      <div className="relative w-full flex flex-col items-center gap-12 md:gap-16">
         {services.map((service, index) => (
-          <div key={service.title}>
+          <div key={service.title} className="w-full">
             {/* Category label */}
             {categoryLabels[index] && (
               <motion.div
-                className="text-center pt-2 pb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                className="text-center pt-12 md:pt-16 pb-16 md:pb-20"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 <span
-                  className="text-xs md:text-sm tracking-[10px] text-white/60 uppercase font-light"
+                  className="text-xs md:text-sm tracking-[10px] text-white/50 uppercase font-light"
                   style={{ fontFamily: "'Sulphur Point', sans-serif" }}
                 >
                   {categoryLabels[index]}
@@ -109,19 +121,19 @@ export default function ServicesSection() {
               index={index}
             />
 
-            {/* Separator between services */}
-            {index < services.length - 1 && (
+            {/* Separator between services - solo si no hay category label siguiente */}
+            {index < services.length - 1 && !categoryLabels[index + 1] && (
               <motion.div
-                className="w-full max-w-3xl mx-auto px-6"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
+                className="w-full max-w-4xl mx-auto px-6 my-12 md:my-16"
+                initial={{ scaleX: 0, opacity: 0 }}
+                whileInView={{ scaleX: 1, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div
                   className="h-px"
                   style={{
-                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)",
+                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
                   }}
                 />
               </motion.div>

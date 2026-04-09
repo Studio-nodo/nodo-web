@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nodo Landing
 
-## Getting Started
+Landing page corporativa para **Studio Nodo** — Web studio especializado en desarrollo web, e-commerce y branding para PYMEs en Argentina.
 
-First, run the development server:
+## 🚀 Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **UI:** React 18 + TypeScript
+- **Styling:** Tailwind CSS
+- **3D:** Three.js + React Three Fiber + Drei
+- **Deploy:** Vercel
+
+## 📦 Instalación
 
 ```bash
+# Instalar dependencias
+npm install
+
+# Servidor de desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build de producción
+npm run build
+
+# Linter
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El servidor de desarrollo estará disponible en [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Características
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ Componentes 3D interactivos para cada servicio
+- ✅ SEO optimizado con structured data (JSON-LD)
+- ✅ Accesibilidad WCAG 2.1 nivel AA
+- ✅ Performance optimizado (Core Web Vitals)
+- ✅ Mobile-first responsive design
+- ✅ Soporte para `prefers-reduced-motion`
+- ✅ Fallback estático para usuarios sin WebGL
 
-## Learn More
+## 📁 Estructura
 
-To learn more about Next.js, take a look at the following resources:
+```
+nodo-landing/
+├── src/
+│   ├── app/              # App Router (páginas y layouts)
+│   ├── components/       # Componentes React
+│   │   ├── 3d/          # Componentes Three.js
+│   │   └── ui/          # Componentes UI
+│   └── lib/              # Utilidades
+├── public/               # Assets estáticos
+├── documentacion/        # Documentación del proyecto
+│   ├── brief.md         # Brief del cliente
+│   ├── decisiones.md    # Decisiones técnicas
+│   ├── requisitos.md    # Requisitos funcionales
+│   ├── seo.md           # Estrategia SEO
+│   ├── ux-mejoras.md    # Mejoras UX
+│   └── notas.md         # Notas de desarrollo
+└── CLAUDE.md            # Contexto para Claude Code
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Documentación
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para contexto completo del proyecto, consultar la carpeta **`documentacion/`**:
 
-## Deploy on Vercel
+- **brief.md** — Objetivo del proyecto y público objetivo
+- **decisiones.md** — Decisiones técnicas y su justificación
+- **requisitos.md** — Requisitos funcionales y no funcionales
+- **seo.md** — Estrategia SEO y checklist
+- **ux-mejoras.md** — Mejoras UX implementadas
+- **notas.md** — Notas de desarrollo, ideas, issues
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Configuración
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Variables de entorno
+
+Crear archivo `.env.local` (opcional, por ahora no hay secrets):
+
+```env
+NEXT_PUBLIC_SITE_URL=https://studionodo.com
+```
+
+### Deploy a Vercel
+
+```bash
+# Deploy a preview
+vercel deploy
+
+# Deploy a producción
+vercel --prod
+```
+
+## 📊 Performance
+
+Métricas objetivo (Core Web Vitals):
+- **LCP** (Largest Contentful Paint): < 2.5s ✅
+- **CLS** (Cumulative Layout Shift): < 0.1 ✅
+- **FID** (First Input Delay): < 100ms ✅
+
+## 🎯 Próximos pasos
+
+- [ ] Implementar formulario de contacto funcional
+- [ ] Crear og-image.jpg para redes sociales
+- [ ] Configurar Google Analytics
+- [ ] Agregar botón flotante de WhatsApp
+- [ ] Deploy a producción con dominio custom
+
+## 📄 Licencia
+
+Copyright © 2026 Studio Nodo. Todos los derechos reservados.

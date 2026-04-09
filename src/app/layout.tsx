@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sulphur_Point, Roboto_Condensed } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const sulphurPoint = Sulphur_Point({
@@ -153,7 +154,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col noise">{children}</body>
+      <body className="min-h-full flex flex-col noise">
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

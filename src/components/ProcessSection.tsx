@@ -32,7 +32,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center px-6 py-40 md:py-48">
+    <section className="relative z-10 w-full flex flex-col items-center px-6 pt-56 md:pt-64 pb-48 md:pb-56">
       {/* Section label */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"

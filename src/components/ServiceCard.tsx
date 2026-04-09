@@ -49,14 +49,14 @@ export default function ServiceCard({
 
   return (
     <motion.div
-      className="relative w-full max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-20"
+      className="relative w-full max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-24"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* Layout: imagen + texto, siempre centrado */}
-      <div className="flex flex-col items-center gap-10 md:gap-16 w-full">
+      <div className="flex flex-col items-center gap-12 md:gap-20 w-full">
         {/* Imagen 3D */}
         <motion.div
           className="relative"
@@ -142,11 +142,12 @@ export default function ServiceCard({
           />
 
           <motion.p
-            className="text-[#c8c5c5] leading-relaxed mb-10 text-center w-full"
+            className="text-[#c8c5c5] leading-relaxed mb-12 md:mb-14 text-center w-full"
             style={{
               fontFamily: "'Roboto Condensed', sans-serif",
               fontSize: "clamp(16px, 2vw, 19px)",
-              lineHeight: "1.7",
+              lineHeight: "1.8",
+              maxWidth: "45ch",
             }}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -156,33 +157,76 @@ export default function ServiceCard({
             {description}
           </motion.p>
 
-          {/* CTA Button */}
-          <motion.a
-            href={getMailtoLink(title)}
-            className="inline-block px-8 py-3.5 rounded-lg text-sm font-medium"
-            style={{
-              fontFamily: "'Roboto Condensed', sans-serif",
-              background: "linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08))",
-              border: "1px solid rgba(255,255,255,0.2)",
-              color: "#ffffff",
-              textDecoration: "none",
-              backdropFilter: "blur(10px)",
-            }}
+          {/* CTA Button - Professional Design */}
+          <motion.div
+            className="relative group"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.14))",
-              borderColor: "rgba(255,255,255,0.35)",
-              y: -3,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
-              scale: 1.02,
-            }}
-            whileTap={{ scale: 0.98 }}
           >
-            Solicitar presupuesto
-          </motion.a>
+            {/* Glow effect behind button */}
+            <motion.div
+              className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                background: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)",
+                filter: "blur(20px)",
+                transform: "scale(1.1)",
+              }}
+            />
+
+            <motion.a
+              href={getMailtoLink(title)}
+              className="relative inline-flex items-center gap-3 px-8 py-4 rounded-xl text-base font-medium overflow-hidden"
+              style={{
+                fontFamily: "'Sulphur Point', sans-serif",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.10))",
+                border: "1px solid rgba(255,255,255,0.25)",
+                color: "#ffffff",
+                textDecoration: "none",
+                backdropFilter: "blur(12px)",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+              }}
+              whileHover={{
+                y: -4,
+                boxShadow: "0 12px 32px rgba(0,0,0,0.4)",
+              }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {/* Animated gradient overlay on hover */}
+              <motion.div
+                className="absolute inset-0 opacity-0"
+                style={{
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15))",
+                }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              <span className="relative z-10 tracking-wide">Solicitar presupuesto</span>
+
+              {/* Arrow icon */}
+              <motion.svg
+                className="relative z-10"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                initial={{ x: 0 }}
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <path
+                  d="M3 8H13M13 8L9 4M13 8L9 12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.svg>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
     </motion.div>

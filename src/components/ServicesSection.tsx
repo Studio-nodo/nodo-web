@@ -63,7 +63,7 @@ const categoryLabels: Record<number, string> = {
 
 export default function ServicesSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center px-6 py-32 md:py-40">
+    <section className="relative z-10 w-full flex flex-col items-center px-6 pt-40 md:pt-48 pb-48 md:pb-56">
       {/* Services header */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"

@@ -70,7 +70,7 @@ const benefits = [
 
 export default function BenefitsSection() {
   return (
-    <section className="relative z-10 w-full flex flex-col items-center px-6 py-40 md:py-48">
+    <section className="relative z-10 w-full flex flex-col items-center px-6 pt-48 md:pt-56 pb-56 md:pb-64">
       {/* Section label */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"

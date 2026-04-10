@@ -2,37 +2,26 @@
 
 import { motion } from "framer-motion";
 
-export default function WhatsAppButton() {
-  const whatsappNumber = "542396511845"; 
-  const message = encodeURIComponent(
-    "Hola! Me gustaría consultar sobre sus servicios de desarrollo web y diseño."
-  );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+const whatsappNumber = "542396511845";
+const message = encodeURIComponent(
+  "Hola! Me gustaría consultar sobre sus servicios de desarrollo web y diseño."
+);
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
+export default function WhatsAppButton() {
   return (
     <motion.a
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-2xl cursor-pointer group"
-      style={{
-        background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-      }}
+      style={{ background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)" }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-        delay: 1.5,
-      }}
-      whileHover={{
-        scale: 1.1,
-        boxShadow: "0 10px 40px rgba(37, 211, 102, 0.4)",
-      }}
+      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1.5 }}
+      whileHover={{ scale: 1.1, boxShadow: "0 10px 40px rgba(37, 211, 102, 0.4)" }}
       whileTap={{ scale: 0.95 }}
     >
-      {/* WhatsApp Icon SVG */}
       <svg
         width="28"
         height="28"
@@ -46,22 +35,11 @@ export default function WhatsAppButton() {
           fill="white"
         />
       </svg>
-
-      {/* Pulse animation */}
       <motion.div
         className="absolute inset-0 rounded-full"
-        style={{
-          background: "rgba(37, 211, 102, 0.5)",
-        }}
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.6, 0, 0.6],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        style={{ background: "rgba(37, 211, 102, 0.5)" }}
+        animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       />
     </motion.a>
   );

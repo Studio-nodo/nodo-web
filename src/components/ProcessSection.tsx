@@ -49,8 +49,8 @@ export default function ProcessSection() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <span
-          className="text-xs md:text-sm tracking-[10px] text-white/35 uppercase font-light mb-4 block"
-          style={{ fontFamily: "'Sulphur Point', sans-serif" }}
+          className="tracking-[10px] uppercase font-normal mb-4 block"
+          style={{ fontFamily: "'Sulphur Point', sans-serif", color: "#ffffff", fontSize: "clamp(14px, 1.2vw, 16px)" }}
         >
           PROCESO
         </span>

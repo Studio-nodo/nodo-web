@@ -18,7 +18,6 @@ export default function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Contenido hero */}
       <motion.div
         className="relative z-10 text-center px-6 w-full max-w-3xl mx-auto mt-16"
         style={{ y: textY, opacity }}
@@ -26,13 +25,12 @@ export default function HeroSection() {
         {/* Headline */}
         <div className="overflow-hidden mb-4">
           <motion.h1
-            className="font-bold leading-tight whitespace-nowrap"
+            className="font-bold leading-tight"
             style={{
               fontFamily: "'Sulphur Point', sans-serif",
               fontSize: "clamp(18px, 3.8vw, 56px)",
               letterSpacing: "-2px",
-              backgroundImage:
-                "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
+              backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -51,8 +49,7 @@ export default function HeroSection() {
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(14px, 2vw, 22px)",
-            backgroundImage:
-              "linear-gradient(90deg, rgba(255,255,255,0) 5%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0) 95%)",
+            backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0) 5%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0) 95%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -64,7 +61,7 @@ export default function HeroSection() {
           Construimos experiencias digitales
         </motion.p>
 
-        {/* Flecha scroll — SVG inline igual a la del Figma */}
+        {/* Scroll arrow */}
         <motion.div
           className="flex justify-center"
           initial={{ opacity: 0 }}
@@ -94,7 +91,6 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
       </motion.div>
-
     </section>
   );
 }

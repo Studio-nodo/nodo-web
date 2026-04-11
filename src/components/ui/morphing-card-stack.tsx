@@ -49,21 +49,24 @@ export function MorphingCardStack({ cards, className }: MorphingCardStackProps) 
         className="relative mx-auto"
         style={{ width: "clamp(220px, 60vw, 280px)", height: "clamp(170px, 38vw, 210px)" }}
       >
-        <AnimatePresence mode="popLayout" initial={true}>
+        <AnimatePresence mode="sync" initial={true}>
           {stackedCards.map((card) => {
             const isTop = card.stackPosition === 0
             const offset = Math.min(card.stackPosition, 3)
 
+            const cardState = {
+              opacity: card.stackPosition > 3 ? 0 : 1 - offset * 0.13,
+              scale: 1 - offset * 0.045,
+              y: offset * 9,
+              rotate: (offset % 2 === 0 ? 1 : -1) * offset * 1.8,
+              zIndex: cards.length - card.stackPosition,
+            }
+
             return (
               <motion.div
                 key={card.id}
-                animate={{
-                  opacity: card.stackPosition > 3 ? 0 : 1 - offset * 0.13,
-                  scale: 1 - offset * 0.045,
-                  y: offset * 9,
-                  rotate: (offset % 2 === 0 ? 1 : -1) * offset * 1.8,
-                  zIndex: cards.length - card.stackPosition,
-                }}
+                initial={cardState}
+                animate={cardState}
                 exit={{ opacity: 0, scale: 0.85, x: -120 }}
                 transition={{ type: "spring", stiffness: 320, damping: 28 }}
                 drag={isTop ? "x" : false}

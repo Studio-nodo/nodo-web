@@ -51,7 +51,7 @@ const AnimatedNavLink = ({
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
-          color: undefined,
+          color: "transparent",
         }}
       >
         {children}
@@ -144,14 +144,14 @@ export function MiniNavbar() {
           </div>
 
           {/* Links */}
-          <nav className="flex flex-col gap-1 px-6 pt-20">
+          <nav className="flex flex-col px-6 pt-20">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="py-3 transition-colors duration-200 hover:text-white"
-                style={linkStyle}
+                className="py-4 transition-colors duration-200 hover:text-white border-b border-white/[0.05] last:border-0"
+                style={{ ...linkStyle, fontSize: "13px", letterSpacing: "2.5px" }}
               >
                 {link.label}
               </a>

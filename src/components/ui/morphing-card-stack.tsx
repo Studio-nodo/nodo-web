@@ -137,9 +137,9 @@ export function MorphingCardStack({ cards, className }: MorphingCardStackProps) 
 
       {/* Dots */}
       <div className="flex justify-center gap-2">
-        {cards.map((_, index) => (
+        {cards.map((card, index) => (
           <button
-            key={index}
+            key={card.id}
             onClick={() => setActiveIndex(index)}
             aria-label={`Ir a beneficio ${index + 1}`}
             className="transition-all duration-300"

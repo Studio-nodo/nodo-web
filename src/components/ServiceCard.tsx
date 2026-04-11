@@ -87,7 +87,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
                 src={imageSrc}
                 alt={imageAlt}
                 fill
-                unoptimized
+                sizes="(max-width: 768px) 100px, 120px"
                 className="object-contain"
                 style={{ filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.35))" }}
               />
@@ -163,7 +163,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
                 src={imageSrc}
                 alt={imageAlt}
                 fill
-                unoptimized
+                sizes="(max-width: 768px) 76px, 96px"
                 className="object-contain"
                 style={{ filter: "brightness(1.2)" }}
               />

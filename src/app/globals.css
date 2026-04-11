@@ -127,14 +127,29 @@ html {
 ::-webkit-scrollbar-track  { background: #0a0b0f; }
 ::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.2); border-radius: 2px; }
 
-/* ── Gradient text — fix para iOS Safari y Android Chrome dentro de layers animados ─── */
+/* ── Gradient text ───────────────────────────────────────────────────────────
+   Solid white fallback first (safe for all browsers).
+   Progressive enhancement: apply gradient clip only when supported.
+   transform: translateZ(0) promotes the element to its own compositing layer,
+   which fixes the iOS Safari / Android Chrome bug where gradient text turns
+   black/transparent when the parent element has will-change: transform.
+── */
 .text-gradient {
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  position: relative;
-  z-index: 1;
+  color: #ffffff;
+}
+
+@supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+  .text-gradient {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    /* Own compositing layer — prevents gradient text from going black
+       when a parent Framer Motion element has will-change: transform */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 }
 
 /* ── Border beam animation ───────────────────────────────────────────────── */

@@ -28,8 +28,7 @@ export default function HeroSection() {
             className="font-bold leading-tight text-gradient"
             style={{
               fontFamily: "'Sulphur Point', sans-serif",
-              fontSize: "clamp(20px, 5.5vw, 60px)",
-            whiteSpace: "nowrap",
+              fontSize: "clamp(55px, 5.5vw, 55px)",
               letterSpacing: "-2px",
               backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
             }}

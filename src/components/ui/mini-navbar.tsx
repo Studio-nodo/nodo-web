@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { MenuToggle } from "@/components/ui/menu-toggle";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
@@ -111,17 +110,14 @@ export function MiniNavbar() {
       {/* Mobile: Sheet trigger */}
       <Sheet open={open} onOpenChange={setOpen}>
         <button
-          className="sm:hidden flex items-center justify-center focus:outline-none"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          style={{ color: "rgba(255,255,255,0.6)" }}
+          className="sm:hidden flex items-center justify-center focus:outline-none w-8 h-8"
+          onClick={() => setOpen(true)}
+          aria-label="Abrir menú"
+          style={{ color: "rgba(255,255,255,0.7)" }}
         >
-          <MenuToggle
-            strokeWidth={2}
-            open={open}
-            onOpenChange={setOpen}
-            className="size-5"
-          />
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
         </button>
 
         <SheetContent
@@ -137,16 +133,13 @@ export function MiniNavbar() {
           <div className="absolute top-5 right-5">
             <button
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center focus:outline-none"
+              className="flex items-center justify-center focus:outline-none w-8 h-8"
               style={{ color: "rgba(255,255,255,0.4)" }}
               aria-label="Cerrar menú"
             >
-              <MenuToggle
-                strokeWidth={2}
-                open={true}
-                onOpenChange={() => setOpen(false)}
-                className="size-5"
-              />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
             </button>
           </div>
 

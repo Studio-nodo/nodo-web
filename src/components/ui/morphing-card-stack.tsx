@@ -105,15 +105,12 @@ export function MorphingCardStack({ cards, className }: MorphingCardStackProps) 
 
                   {/* Title */}
                   <h3
-                    className="font-bold"
+                    className="font-bold text-gradient"
                     style={{
                       fontFamily: "'Sulphur Point', sans-serif",
                       fontSize: "clamp(15px, 2.2vw, 18px)",
                       letterSpacing: "-0.2px",
                       backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.9) 0%, #ffffff 40%, #ffffff 60%, rgba(255,255,255,0.9) 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
                     }}
                   >
                     {card.title}

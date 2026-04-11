@@ -25,15 +25,12 @@ export default function HeroSection() {
         {/* Headline */}
         <div className="overflow-hidden mb-4">
           <motion.h1
-            className="font-bold leading-tight"
+            className="font-bold leading-tight text-gradient"
             style={{
               fontFamily: "'Sulphur Point', sans-serif",
               fontSize: "clamp(18px, 3.8vw, 56px)",
               letterSpacing: "-2px",
               backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
             }}
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -45,14 +42,11 @@ export default function HeroSection() {
 
         {/* Subtítulo */}
         <motion.p
-          className="font-light tracking-wide mb-14"
+          className="font-light tracking-wide mb-14 text-gradient"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(14px, 2vw, 22px)",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0) 5%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0) 95%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
           }}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}

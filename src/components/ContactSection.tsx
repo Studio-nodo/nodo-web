@@ -50,15 +50,12 @@ export default function ContactSection() {
           CONTACTO
         </span>
         <h2
-          className="font-bold mt-4"
+          className="font-bold mt-4 text-gradient"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(24px, 4vw, 42px)",
             letterSpacing: "-2px",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
           }}
         >
           Hablemos

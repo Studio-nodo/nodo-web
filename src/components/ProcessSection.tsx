@@ -55,15 +55,12 @@ export default function ProcessSection() {
           PROCESO
         </span>
         <h2
-          className="font-bold mt-4"
+          className="font-bold mt-4 text-gradient"
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(24px, 4vw, 42px)",
             letterSpacing: "-2px",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
           }}
         >
           Cómo trabajamos
@@ -162,15 +159,12 @@ export default function ProcessSection() {
             {/* Content column */}
             <div className="flex-1 pb-4">
               <motion.h3
-                className="font-bold mb-5"
+                className="font-bold mb-5 text-gradient"
                 style={{
                   fontFamily: "'Sulphur Point', sans-serif",
                   fontSize: "clamp(22px, 3.5vw, 30px)",
                   letterSpacing: "-0.8px",
                   backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.3) 0%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0.3) 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
                 }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}

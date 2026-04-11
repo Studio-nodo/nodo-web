@@ -127,6 +127,16 @@ html {
 ::-webkit-scrollbar-track  { background: #0a0b0f; }
 ::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.2); border-radius: 2px; }
 
+/* ── Gradient text — fix para iOS Safari y Android Chrome dentro de layers animados ─── */
+.text-gradient {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
 /* ── Border beam animation ───────────────────────────────────────────────── */
 @keyframes border-beam {
   100% { offset-distance: 100%; }

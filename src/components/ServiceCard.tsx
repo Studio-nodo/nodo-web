@@ -23,7 +23,6 @@ export default function ServiceCard({ title, category, description, imageSrc, im
     : "translateY(0px) scale(1)";
 
   const isEven = index % 2 === 0;
-  const restingX = isEven ? -24 : 24;
   const enterX = isEven ? -80 : 80;
 
   return (
@@ -36,7 +35,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
     >
       <div
         className="w-full max-w-3xl cursor-pointer"
-        style={{ perspective: "1400px", height: "clamp(100px, 13vw, 140px)" }}
+        style={{ perspective: "1400px", height: "clamp(130px, 13vw, 150px)" }}
         onClick={() => setIsFlipped((v) => !v)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

@@ -123,21 +123,21 @@ export function MiniNavbar() {
         <SheetContent
           side="right"
           showClose={false}
-          className="border-l border-white/[0.06] backdrop-blur-xl"
+          className="border-l border-white/[0.06] backdrop-blur-xl flex flex-col"
           style={{
             background: "rgba(6, 6, 8, 0.92)",
             boxShadow: "-8px 0 40px rgba(0,0,0,0.6)",
           }}
         >
           {/* Links */}
-          <nav className="flex flex-col px-8 pt-16">
+          <nav className="flex flex-col justify-center flex-1 px-10 gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="py-6 transition-colors duration-200 hover:text-white border-b border-white/[0.05] last:border-0"
-                style={{ ...linkStyle, fontSize: "15px", letterSpacing: "3px" }}
+                className="py-7 border-b border-white/[0.06] last:border-0 transition-colors duration-200 hover:text-white"
+                style={{ ...linkStyle, fontSize: "18px", letterSpacing: "4px" }}
               >
                 {link.label}
               </a>

@@ -19,17 +19,17 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
       <motion.div
-        className="relative z-10 text-center px-6 w-full max-w-3xl mx-auto mt-16"
+        className="relative z-10 text-center px-5 sm:px-8 w-full max-w-5xl mx-auto mt-16"
         style={{ y: textY, opacity }}
       >
         {/* Headline */}
         <div className="overflow-hidden mb-4">
           <motion.h1
-            className="font-bold leading-tight text-gradient"
+            className="font-bold leading-tight text-gradient hero-title"
             style={{
               fontFamily: "'Sulphur Point', sans-serif",
-              fontSize: "clamp(20px, 5.5vw, 55px)",
-              letterSpacing: "-2px",
+              fontSize: "4.5vw",
+              letterSpacing: "0.3px",
               backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
             }}
             initial={{ y: 60, opacity: 0 }}

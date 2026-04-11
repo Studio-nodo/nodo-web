@@ -38,6 +38,7 @@ const services = [
     description: "Agente inteligente entrenado con el conocimiento específico de tu negocio. Resuelve consultas frecuentes, califica leads y agenda citas las 24 horas — sin que tengas que intervenir.",
     imageSrc: "/original-designs/agente-ia.png",
     imageAlt: "Agente de Atención al Cliente con IA - Studio Nodo",
+    imagePosition: "center bottom",
   },
   {
     title: "DASHBOARD IA",
@@ -73,7 +74,7 @@ export default function ServicesSection() {
   return (
     <section
       id="servicios"
-      className="relative z-10 w-full flex flex-col items-center px-6"
+      className="relative z-10 w-full flex flex-col items-center px-5 sm:px-8"
       style={{
         paddingTop: "clamp(100px, 6.25rem, 128px)",
         paddingBottom: "clamp(80px, 5rem, 100px)",
@@ -81,7 +82,7 @@ export default function ServicesSection() {
     >
       {/* Header */}
       <motion.div
-        className="text-center mb-20 md:mb-28 w-full"
+        className="text-center mb-24 md:mb-32 w-full"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -121,6 +122,7 @@ export default function ServicesSection() {
             imageSrc={service.imageSrc}
             imageAlt={service.imageAlt}
             index={index}
+            imagePosition={service.imagePosition}
           />
         ))}
       </div>

@@ -41,7 +41,7 @@ export default function ProcessSection() {
   return (
     <section
       id="proceso"
-      className="relative z-10 w-full flex flex-col items-center px-6"
+      className="relative z-10 w-full flex flex-col items-center px-5 sm:px-8"
       style={{
         paddingTop: "clamp(80px, 5rem, 100px)",
         paddingBottom: "clamp(80px, 5rem, 100px)",
@@ -176,10 +176,33 @@ export default function ProcessSection() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
               className="grid items-start mb-6"
-              style={{ gridTemplateColumns: "1fr 1fr", gap: "0" }}
+              style={{ gridTemplateColumns: "1fr 1fr", gap: "0 8px" }}
             >
-              <div className="pr-4">{!isRight && titleBlock}</div>
-              <div className="pl-4">{isRight && titleBlock}</div>
+              {/* Desktop: alternating columns */}
+              <div className="hidden sm:block pr-4">{!isRight && titleBlock}</div>
+              <div className="hidden sm:block pl-4">{isRight && titleBlock}</div>
+              {/* Mobile: full width, always left-aligned */}
+              <div className="block sm:hidden col-span-2">
+                <motion.button
+                  onClick={() => toggle(index)}
+                  className="group w-full text-left"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="flex items-center gap-3">
+                    <span style={{ fontFamily: "'Sulphur Point', sans-serif", fontSize: "13px", letterSpacing: "3px", color: isOpen ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.25)", flexShrink: 0, transition: "color 0.3s ease" }}>{step.number}</span>
+                    <h3 className="text-gradient" style={{ fontFamily: "'Sulphur Point', sans-serif", fontSize: "clamp(17px, 5vw, 24px)", fontWeight: 700, letterSpacing: "-0.5px", backgroundImage: isOpen ? "linear-gradient(90deg, rgba(255,255,255,0.8) 0%, #ffffff 40%, #ffffff 60%, rgba(255,255,255,0.8) 100%)" : "linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.5) 100%)" }}>{step.title}</h3>
+                  </div>
+                  <div style={{ height: "1px", width: "45%", marginTop: "10px", background: isOpen ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)", transition: "background 0.3s ease" }} />
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} style={{ overflow: "hidden" }}>
+                        <p style={{ fontFamily: "'Roboto Condensed', sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, paddingTop: "10px", paddingBottom: "16px" }}>{step.description}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.button>
+              </div>
             </motion.div>
           );
         })}

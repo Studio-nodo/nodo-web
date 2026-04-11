@@ -11,9 +11,10 @@ interface ServiceCardProps {
   imageSrc: string;
   imageAlt: string;
   index: number;
+  imagePosition?: string;
 }
 
-export default function ServiceCard({ title, category, description, imageSrc, imageAlt, index }: ServiceCardProps) {
+export default function ServiceCard({ title, category, description, imageSrc, imageAlt, index, imagePosition = "center" }: ServiceCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -89,7 +90,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
                 fill
                 sizes="(max-width: 768px) 100px, 120px"
                 className="object-contain"
-                style={{ filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.35))" }}
+                style={{ filter: "brightness(1.35) drop-shadow(0 4px 12px rgba(0,0,0,0.35))", objectPosition: imagePosition }}
               />
             </div>
 

@@ -66,7 +66,7 @@ export default function BenefitsSection() {
   return (
     <section
       id="beneficios"
-      className="relative z-10 w-full flex flex-col items-center px-6"
+      className="relative z-10 w-full flex flex-col items-center px-5 sm:px-8"
       style={{
         paddingTop: "clamp(80px, 5rem, 100px)",
         paddingBottom: "clamp(80px, 5rem, 100px)",
@@ -74,7 +74,7 @@ export default function BenefitsSection() {
     >
       {/* Header */}
       <motion.div
-        className="text-center mb-16 md:mb-20 w-full"
+        className="text-center mb-24 md:mb-32 w-full"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

@@ -29,7 +29,7 @@ export default function ContactSection() {
   return (
     <section
       id="contacto"
-      className="relative z-10 w-full px-6 flex flex-col items-center"
+      className="relative z-10 w-full px-5 sm:px-8 flex flex-col items-center"
       style={{
         paddingTop: "clamp(80px, 5rem, 100px)",
         paddingBottom: "clamp(120px, 7.5rem, 150px)",

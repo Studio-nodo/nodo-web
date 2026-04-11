@@ -7,27 +7,27 @@ const steps = [
   {
     number: "01",
     title: "Consulta inicial",
-    description: "Primera reunión para entender tu proyecto, objetivos y necesidades específicas.",
+    description: "Primera reunión para entender tu proyecto y objetivos.",
   },
   {
     number: "02",
     title: "Propuesta",
-    description: "Presentamos presupuesto detallado, timeline realista y stack tecnológico a utilizar.",
+    description: "Presupuesto detallado, timeline y stack tecnológico.",
   },
   {
     number: "03",
     title: "Desarrollo",
-    description: "Diseño → Desarrollo → Revisiones. Te mantenemos al tanto en cada etapa del proceso.",
+    description: "Diseño, desarrollo y revisiones con seguimiento en cada etapa.",
   },
   {
     number: "04",
     title: "Entrega",
-    description: "Deploy a producción, capacitación para gestión autónoma y documentación completa.",
+    description: "Deploy, capacitación y documentación para gestión autónoma.",
   },
   {
     number: "05",
     title: "Soporte",
-    description: "Acompañamiento post-lanzamiento, ajustes y soporte técnico continuo.",
+    description: "Soporte post-lanzamiento con ajustes y acompañamiento continuo.",
   },
 ];
 
@@ -122,23 +122,13 @@ export default function ProcessSection() {
                 >
                   {step.title}
                 </h3>
-
-                <motion.span
-                  animate={{ rotate: isOpen ? 180 : 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ color: isOpen ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.3)", flexShrink: 0, display: "flex", transition: "color 0.25s ease" }}
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </motion.span>
               </div>
 
               {/* Short line under title only */}
               <div
                 style={{
                   height: "1px",
-                  width: "60%",
+                  width: "45%",
                   marginTop: "12px",
                   marginLeft: isRight ? 0 : "auto",
                   marginRight: isRight ? "auto" : 0,

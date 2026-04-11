@@ -181,24 +181,6 @@ export default function ServiceCard({ title, category, description, imageSrc, im
               {description}
             </p>
 
-            <span
-              style={{
-                flexShrink: 0,
-                display: "inline-block",
-                padding: "5px 14px",
-                border: "1px solid rgba(255,255,255,0.22)",
-                borderRadius: "100px",
-                fontFamily: "'Sulphur Point', sans-serif",
-                fontSize: "clamp(9px, 1vw, 12px)",
-                fontWeight: 700,
-                letterSpacing: "1.5px",
-                color: "rgba(255,255,255,0.6)",
-                textTransform: "uppercase",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {title}
-            </span>
           </div>
 
         </div>

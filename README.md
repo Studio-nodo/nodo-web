@@ -17,11 +17,4 @@ Landing page corporativa de **Studio Nodo**, estudio de diseño y desarrollo web
 - Tailwind CSS + Framer Motion
 - Deploy en Vercel
 
-## Desarrollo
-
-```bash
-npm install
-npm run dev      # localhost:3000
-npm run build
-npm run lint
 ```

@@ -7,7 +7,7 @@ const services = [
   {
     title: "LANDING PAGE",
     category: "WEB",
-    description: "Páginas estratégicas diseñadas para convertir visitas en clientes. Optimizadas para carga rápida, mobile-first y con formularios inteligentes que capturan leads efectivamente.",
+    description: "Páginas estratégicas para convertir visitas en clientes, rápidas, mobile-first y con formularios inteligentes que capturan leads.",
     imageSrc: "/original-designs/landing.png",
     imageAlt: "Desarrollo de Landing Page de alta conversión - Studio Nodo",
   },
@@ -21,14 +21,14 @@ const services = [
   {
     title: "WEB CORPORATIVA",
     category: "WEB",
-    description: "Sitios profesionales que proyectan la esencia de tu empresa. Incluye CMS para gestión autónoma, blog, formularios y secciones personalizadas según tus necesidades.",
+    description: "Sitios profesionales que reflejan tu empresa, con CMS, blog, formularios y secciones personalizadas.",
     imageSrc: "/original-designs/webcorp.png",
     imageAlt: "Desarrollo de Web Corporativa profesional - Studio Nodo",
   },
   {
     title: "AUTOMATIZACIÓN",
     category: "IA",
-    description: "Flujos automatizados con n8n y Make que eliminan el trabajo manual repetitivo. Sincronización de leads al CRM, notificaciones de venta y seguimiento automático de clientes potenciales — todo sin intervención humana.",
+    description: "Flujos automatizados con n8n y Make que eliminan tareas manuales: sincronización de leads, notificaciones de venta y seguimiento automático sin intervención humana.",
     imageSrc: "/original-designs/automatizacion.png",
     imageAlt: "Automatización de Procesos de Negocio con n8n y Make - Studio Nodo",
   },
@@ -42,7 +42,7 @@ const services = [
   {
     title: "DASHBOARD IA",
     category: "IA",
-    description: "Panel centralizado que conecta todas las fuentes de datos de tu negocio. Hacé preguntas en lenguaje natural — '¿Cuál fue el servicio más rentable este mes?' — y obtenés respuestas visuales al instante.",
+    description: "Panel centralizado que conecta tus datos y responde preguntas con visuales al instante.",
     imageSrc: "/original-designs/dashboard-ia.png",
     imageAlt: "Dashboard de Decisiones con IA para negocios - Studio Nodo",
   },
@@ -56,7 +56,7 @@ const services = [
   {
     title: "REDES SOCIALES",
     category: "DISEÑO",
-    description: "Gestión integral de Instagram, Facebook y LinkedIn. Estrategia de contenidos, diseño de piezas, programación y reportes mensuales con métricas reales de alcance y engagement.",
+    description: "Gestión de Instagram, Facebook y LinkedIn con estrategia, diseño, programación y reportes de métricas.",
     imageSrc: "/original-designs/redes.png",
     imageAlt: "Gestión de Redes Sociales para empresas - Studio Nodo",
   },

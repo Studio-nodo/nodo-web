@@ -23,14 +23,14 @@ export default function ServiceCard({ title, category, description, imageSrc, im
     : "translateY(0px) scale(1)";
 
   const isEven = index % 2 === 0;
-  const restingX = isEven ? -44 : 44;
-  const enterX = isEven ? -140 : 140;
+  const restingX = isEven ? -24 : 24;
+  const enterX = isEven ? -80 : 80;
 
   return (
     <motion.div
       className="w-full flex justify-center px-4 md:px-6"
       initial={{ opacity: 0, x: enterX }}
-      whileInView={{ opacity: 1, x: restingX }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
     >

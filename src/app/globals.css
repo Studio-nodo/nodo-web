@@ -114,6 +114,12 @@ body {
   color: var(--foreground);
   font-family: 'Roboto Condensed', sans-serif;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent horizontal overflow at root */
+html {
+  overflow-x: hidden;
 }
 
 /* ── Custom scrollbar ────────────────────────────────────────────────────── */

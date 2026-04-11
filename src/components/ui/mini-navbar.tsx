@@ -129,29 +129,15 @@ export function MiniNavbar() {
             boxShadow: "-8px 0 40px rgba(0,0,0,0.6)",
           }}
         >
-          {/* Close button */}
-          <div className="absolute top-5 right-5">
-            <button
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-center focus:outline-none w-8 h-8"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-              aria-label="Cerrar menú"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
           {/* Links */}
-          <nav className="flex flex-col px-6 pt-20">
+          <nav className="flex flex-col px-8 pt-16">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="py-4 transition-colors duration-200 hover:text-white border-b border-white/[0.05] last:border-0"
-                style={{ ...linkStyle, fontSize: "13px", letterSpacing: "2.5px" }}
+                className="py-6 transition-colors duration-200 hover:text-white border-b border-white/[0.05] last:border-0"
+                style={{ ...linkStyle, fontSize: "15px", letterSpacing: "3px" }}
               >
                 {link.label}
               </a>

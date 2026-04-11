@@ -26,6 +26,27 @@ const services = [
     imageAlt: "Desarrollo de Web Corporativa profesional - Studio Nodo",
   },
   {
+    title: "AUTOMATIZACIÓN",
+    category: "IA",
+    description: "Flujos automatizados con n8n y Make que eliminan el trabajo manual repetitivo. Sincronización de leads al CRM, notificaciones de venta y seguimiento automático de clientes potenciales — todo sin intervención humana.",
+    imageSrc: "/original-designs/automatizacion.png",
+    imageAlt: "Automatización de Procesos de Negocio con n8n y Make - Studio Nodo",
+  },
+  {
+    title: "AGENTE IA",
+    category: "IA",
+    description: "Agente inteligente entrenado con el conocimiento específico de tu negocio. Resuelve consultas frecuentes, califica leads y agenda citas las 24 horas — sin que tengas que intervenir.",
+    imageSrc: "/original-designs/agente-ia.png",
+    imageAlt: "Agente de Atención al Cliente con IA - Studio Nodo",
+  },
+  {
+    title: "DASHBOARD IA",
+    category: "IA",
+    description: "Panel centralizado que conecta todas las fuentes de datos de tu negocio. Hacé preguntas en lenguaje natural — '¿Cuál fue el servicio más rentable este mes?' — y obtenés respuestas visuales al instante.",
+    imageSrc: "/original-designs/dashboard-ia.png",
+    imageAlt: "Dashboard de Decisiones con IA para negocios - Studio Nodo",
+  },
+  {
     title: "BRANDING",
     category: "DISEÑO",
     description: "Identidad visual completa: logotipo con variantes, paleta de colores, tipografías, manual de marca y aplicaciones en papelería digital. Tu marca con personalidad única.",

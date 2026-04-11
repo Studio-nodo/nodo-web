@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const steps = [
   {
@@ -31,6 +32,12 @@ const steps = [
 ];
 
 export default function ProcessSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <section
       id="proceso"
@@ -40,7 +47,7 @@ export default function ProcessSection() {
         paddingBottom: "clamp(80px, 5rem, 100px)",
       }}
     >
-      {/* Section label */}
+      {/* Header */}
       <motion.div
         className="text-center mb-24 md:mb-32 w-full"
         initial={{ opacity: 0, y: 20 }}
@@ -68,137 +75,124 @@ export default function ProcessSection() {
       </motion.div>
 
       {/* Steps */}
-      <div className="w-full max-w-5xl">
-        {steps.map((step, index) => (
-          <motion.div
-            key={step.number}
-            className="relative flex gap-10 md:gap-16 mb-20 md:mb-24 last:mb-0"
-            initial={{ opacity: 0, y: 40, x: -20 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{
-              duration: 0.9,
-              delay: index * 0.12,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            {/* Number column */}
-            <div className="flex-shrink-0 flex flex-col items-center">
-              {/* Number circle */}
-              <motion.div
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center relative"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06))",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  backdropFilter: "blur(10px)",
-                }}
-                initial={{ scale: 0.8, rotate: -12 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.12 + 0.2,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  borderColor: "rgba(255,255,255,0.35)",
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
-                }}
+      <div className="w-full max-w-4xl flex flex-col">
+        {steps.map((step, index) => {
+          const isRight = index % 2 !== 0;
+          const isOpen = openIndex === index;
+
+          const titleBlock = (
+            <motion.button
+              onClick={() => toggle(index)}
+              className="group w-full"
+              whileHover={{ x: isRight ? 6 : -6 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Number + Title row */}
+              <div
+                className="flex items-center gap-3"
+                style={{ flexDirection: isRight ? "row" : "row-reverse" }}
               >
-                {/* Animated glow behind number */}
-                <motion.div
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: "radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)",
-                    filter: "blur(12px)",
-                  }}
-                  animate={{
-                    opacity: [0.6, 1, 0.6],
-                    scale: [0.9, 1.1, 0.9],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.4,
-                  }}
-                />
+                {/* Number */}
                 <span
-                  className="text-white font-bold relative z-10"
                   style={{
                     fontFamily: "'Sulphur Point', sans-serif",
-                    fontSize: "clamp(14px, 1.5vw, 16px)",
+                    fontSize: "clamp(13px, 1.2vw, 15px)",
+                    letterSpacing: "3px",
+                    color: isOpen ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.25)",
+                    flexShrink: 0,
+                    transition: "color 0.3s ease",
                   }}
                 >
                   {step.number}
                 </span>
-              </motion.div>
 
-              {/* Connecting line */}
-              {index < steps.length - 1 && (
-                <motion.div
-                  className="w-0.5 flex-1 mt-4"
+                <h3
+                  className="flex-1 text-gradient"
                   style={{
-                    background: "linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.12), rgba(255,255,255,0.05))",
-                    minHeight: "60px",
-                    transformOrigin: "top",
+                    fontFamily: "'Sulphur Point', sans-serif",
+                    fontSize: "clamp(17px, 2.4vw, 26px)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.5px",
+                    backgroundImage: isOpen
+                      ? "linear-gradient(90deg, rgba(255,255,255,0.8) 0%, #ffffff 40%, #ffffff 60%, rgba(255,255,255,0.8) 100%)"
+                      : "linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.5) 100%)",
+                    textAlign: isRight ? "left" : "right",
+                    transition: "opacity 0.25s ease",
                   }}
-                  initial={{ scaleY: 0, opacity: 0 }}
-                  whileInView={{ scaleY: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 1,
-                    delay: index * 0.12 + 0.4,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                />
-              )}
-            </div>
+                >
+                  {step.title}
+                </h3>
 
-            {/* Content column */}
-            <div className="flex-1 pb-4">
-              <motion.h3
-                className="font-bold mb-5 text-gradient"
-                style={{
-                  fontFamily: "'Sulphur Point', sans-serif",
-                  fontSize: "clamp(22px, 3.5vw, 30px)",
-                  letterSpacing: "-0.8px",
-                  backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.3) 0%, #ffffff 35%, #ffffff 65%, rgba(255,255,255,0.3) 100%)",
-                }}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.12 + 0.3,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {step.title}
-              </motion.h3>
+                <motion.span
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ color: isOpen ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.3)", flexShrink: 0, display: "flex", transition: "color 0.25s ease" }}
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </motion.span>
+              </div>
 
-              <motion.p
-                className="text-[#c8c5c5] leading-relaxed"
+              {/* Short line under title only */}
+              <div
                 style={{
-                  fontFamily: "'Roboto Condensed', sans-serif",
-                  fontSize: "clamp(16px, 2vw, 19px)",
-                  lineHeight: "1.8",
+                  height: "1px",
+                  width: "60%",
+                  marginTop: "12px",
+                  marginLeft: isRight ? 0 : "auto",
+                  marginRight: isRight ? "auto" : 0,
+                  background: isOpen ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)",
+                  transition: "background 0.3s ease",
                 }}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.12 + 0.4,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {step.description}
-              </motion.p>
-            </div>
-          </motion.div>
-        ))}
+              />
+
+              {/* Description */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ overflow: "hidden" }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: "'Roboto Condensed', sans-serif",
+                        fontSize: "clamp(13px, 1.4vw, 15px)",
+                        color: "rgba(255,255,255,0.65)",
+                        lineHeight: 1.7,
+                        paddingTop: "12px",
+                        paddingBottom: "18px",
+                        textAlign: isRight ? "left" : "right",
+                        maxWidth: "34ch",
+                        marginLeft: isRight ? 0 : "auto",
+                      }}
+                    >
+                      {step.description}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          );
+
+          return (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+              className="grid items-start mb-6"
+              style={{ gridTemplateColumns: "1fr 1fr", gap: "0" }}
+            >
+              <div className="pr-4">{!isRight && titleBlock}</div>
+              <div className="pl-4">{isRight && titleBlock}</div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

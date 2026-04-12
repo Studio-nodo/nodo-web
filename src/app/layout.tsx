@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sulphur_Point, Roboto_Condensed } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 import "./globals.css";
 
 const sulphurPoint = Sulphur_Point({
@@ -150,7 +151,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col" style={{ background: '#000000' }}>{children}</body>
+      <body className="min-h-full flex flex-col" style={{ background: '#000000' }}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

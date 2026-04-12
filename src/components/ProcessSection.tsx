@@ -81,9 +81,13 @@ export default function ProcessSection() {
           const isOpen = openIndex === index;
 
           const titleBlock = (
-            <motion.button
+            <motion.div
               onClick={() => toggle(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") toggle(index); }}
               className="group w-full"
+              style={{ cursor: "pointer" }}
               whileHover={{ x: isRight ? 6 : -6 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
@@ -167,7 +171,7 @@ export default function ProcessSection() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.button>
+            </motion.div>
           );
 
           return (

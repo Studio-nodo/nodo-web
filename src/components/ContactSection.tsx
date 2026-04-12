@@ -14,8 +14,8 @@ const contacts = [
   },
   {
     icon: imgInstagram,
-    text: "studio-nodo",
-    href: "https://instagram.com/studio-nodo",
+    text: "studionodo.team",
+    href: "https://www.instagram.com/studionodo.team/",
     isInstagram: true,
   },
 ];

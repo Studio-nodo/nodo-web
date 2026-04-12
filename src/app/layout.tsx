@@ -104,7 +104,7 @@ export default function RootLayout({
         contactType: "customer service",
       },
     ],
-    sameAs: ["https://instagram.com/studio-nodo"],
+    sameAs: ["https://www.instagram.com/studionodo.team/"],
     offers: {
       "@type": "AggregateOffer",
       itemOffered: [

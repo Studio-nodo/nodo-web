@@ -146,7 +146,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
               boxShadow: "0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07)",
               display: "flex",
               alignItems: "center",
-              padding: "0 clamp(20px, 3vw, 40px)",
+              padding: "0 clamp(28px, 3.5vw, 48px)",
               gap: "clamp(14px, 2vw, 28px)",
               overflow: "hidden",
             }}
@@ -173,7 +173,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
             <p
               style={{
                 fontFamily: "'Roboto Condensed', sans-serif",
-                fontSize: "clamp(12px, 1.4vw, 15px)",
+                fontSize: "clamp(14px, 1.8vw, 20px)",
                 color: "rgba(255,255,255,0.65)",
                 lineHeight: 1.6,
                 flex: 1,

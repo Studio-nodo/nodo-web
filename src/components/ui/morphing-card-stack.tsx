@@ -87,7 +87,7 @@ export function MorphingCardStack({ cards, className }: MorphingCardStackProps) 
                 onClick={() => { if (isDragging) return }}
               >
                 {/* Centered content */}
-                <div className="flex flex-col items-center justify-center h-full gap-3 px-5 pb-6 pt-5 text-center">
+                <div className="flex flex-col items-center justify-center h-full gap-3 px-8 pb-7 pt-5 text-center">
                   {/* Icon — large, low opacity */}
                   {card.icon && (
                     <div
@@ -123,9 +123,10 @@ export function MorphingCardStack({ cards, className }: MorphingCardStackProps) 
                   <p
                     style={{
                       fontFamily: "'Roboto Condensed', sans-serif",
-                      fontSize: "clamp(12px, 1.6vw, 14px)",
+                      fontSize: "clamp(13px, 2vw, 18px)",
                       color: "rgba(220,218,218,0.9)",
                       lineHeight: 1.55,
+                      padding: "0 12px",
                     }}
                   >
                     {card.description}

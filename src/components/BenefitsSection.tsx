@@ -18,7 +18,7 @@ const benefits = [
   {
     id: "precio",
     title: "Precio transparente",
-    description: "Presupuesto fijo sin sorpresas. Sabés exactamente qué pagás y qué obtenés desde el primer día.",
+    description: "Presupuesto fijo sin sorpresas: sabés qué pagás desde el primer día.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" style={{ width: "100%", height: "100%" }}>
         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"
@@ -41,7 +41,7 @@ const benefits = [
   {
     id: "seo",
     title: "SEO incluido",
-    description: "Estructura técnica optimizada para buscadores desde el inicio. No como add-on, sino como base.",
+    description: "Estructura técnica optimizada para SEO desde el inicio, como base.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" style={{ width: "100%", height: "100%" }}>
         <circle cx="11" cy="11" r="7" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
@@ -52,7 +52,7 @@ const benefits = [
   {
     id: "equipo",
     title: "Ingeniería & Diseño",
-    description: "Expertise técnico y visual integrado en cada proyecto desde el primer día, sin tercerizar nada.",
+    description: "Expertise técnico y visual integrado desde el día uno, sin tercerizar.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" style={{ width: "100%", height: "100%" }}>
         <polyline points="16 18 22 12 16 6" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -91,7 +91,7 @@ export default function BenefitsSection() {
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(24px, 4vw, 42px)",
-            letterSpacing: "-2px",
+            letterSpacing: "0.5px",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
           }}
         >

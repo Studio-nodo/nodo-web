@@ -66,7 +66,7 @@ export default function ProcessSection() {
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(24px, 4vw, 42px)",
-            letterSpacing: "-2px",
+            letterSpacing: "0.5px",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
           }}
         >
@@ -150,14 +150,16 @@ export default function ProcessSection() {
                     <p
                       style={{
                         fontFamily: "'Roboto Condensed', sans-serif",
-                        fontSize: "clamp(13px, 1.4vw, 15px)",
+                        fontSize: "clamp(12px, 1.4vw, 16px)",
                         color: "rgba(255,255,255,0.65)",
                         lineHeight: 1.7,
                         paddingTop: "12px",
                         paddingBottom: "18px",
                         textAlign: isRight ? "left" : "right",
-                        maxWidth: "34ch",
+                        maxWidth: "28ch",
                         marginLeft: isRight ? 0 : "auto",
+                        paddingRight: "8px",
+                        paddingLeft: "8px",
                       }}
                     >
                       {step.description}

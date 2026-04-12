@@ -14,7 +14,7 @@ const services = [
   {
     title: "E-COMMERCE",
     category: "WEB",
-    description: "Tiendas online completas con pasarelas de pago integradas, gestión de stock, panel administrativo y sistema de envíos. Tu negocio vendiendo 24/7.",
+    description: "Tiendas online con pagos integrados, stock y panel administrativo. Tu negocio vendiendo 24/7.",
     imageSrc: "/original-designs/ecommerce.png",
     imageAlt: "Desarrollo de E-Commerce y tienda online - Studio Nodo",
   },
@@ -28,14 +28,14 @@ const services = [
   {
     title: "AUTOMATIZACIÓN",
     category: "IA",
-    description: "Flujos automatizados con n8n y Make que eliminan tareas manuales: sincronización de leads, notificaciones de venta y seguimiento automático sin intervención humana.",
+    description: "Flujos con n8n y Make: leads, notificaciones y seguimiento automático.",
     imageSrc: "/original-designs/automatizacion.png",
     imageAlt: "Automatización de Procesos de Negocio con n8n y Make - Studio Nodo",
   },
   {
     title: "AGENTE IA",
     category: "IA",
-    description: "Agente inteligente entrenado con el conocimiento específico de tu negocio. Resuelve consultas frecuentes, califica leads y agenda citas las 24 horas — sin que tengas que intervenir.",
+    description: "Agente entrenado con tu negocio: responde consultas, califica leads y agenda citas 24/7.",
     imageSrc: "/original-designs/agente-ia.png",
     imageAlt: "Agente de Atención al Cliente con IA - Studio Nodo",
     imagePosition: "center bottom",
@@ -50,7 +50,7 @@ const services = [
   {
     title: "BRANDING",
     category: "DISEÑO",
-    description: "Identidad visual completa: logotipo con variantes, paleta de colores, tipografías, manual de marca y aplicaciones en papelería digital. Tu marca con personalidad única.",
+    description: "Identidad visual completa: logo, paleta, tipografías, manual y papelería digital.",
     imageSrc: "/original-designs/branding.png",
     imageAlt: "Diseño de Branding e identidad de marca - Studio Nodo",
   },
@@ -64,7 +64,7 @@ const services = [
   {
     title: "LOGOTIPO",
     category: "DISEÑO",
-    description: "Diseño profesional a medida con 3 propuestas conceptuales y 2 rondas de ajustes. Entrega en todos los formatos (AI, SVG, PNG, PDF) y versiones para cualquier aplicación.",
+    description: "Diseño a medida con 3 propuestas y 2 ajustes. Entrega en AI, SVG, PNG y PDF.",
     imageSrc: "/original-designs/logo.png",
     imageAlt: "Diseño de Logotipo profesional a medida - Studio Nodo",
   },
@@ -103,7 +103,7 @@ export default function ServicesSection() {
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(24px, 4vw, 42px)",
-            letterSpacing: "-2px",
+            letterSpacing: "0.5px",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
           }}
         >

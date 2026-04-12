@@ -9,13 +9,8 @@ const imgInstagram = "https://www.figma.com/api/mcp/asset/3a3f9fb4-d0c3-4e8f-b92
 const contacts = [
   {
     icon: imgMail,
-    text: "mmartone@studio-nodo.com",
-    href: "mailto:mmartone@studio-nodo.com",
-  },
-  {
-    icon: imgMail,
-    text: "strezeguet@studio-nodo.com",
-    href: "mailto:strezeguet@studio-nodo.com",
+    text: "contacto@studio-nodo.com",
+    href: "mailto:contacto@studio-nodo.com",
   },
   {
     icon: imgInstagram,
@@ -54,7 +49,7 @@ export default function ContactSection() {
           style={{
             fontFamily: "'Sulphur Point', sans-serif",
             fontSize: "clamp(24px, 4vw, 42px)",
-            letterSpacing: "-2px",
+            letterSpacing: "0.5px",
             backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.15) 0%, #ffffff 25%, #ffffff 75%, rgba(255,255,255,0.15) 100%)",
           }}
         >
@@ -125,7 +120,7 @@ export default function ContactSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        © 2025 Studio Nodo. Todos los derechos reservados.
+        © 2026 studio-nodo.com
       </motion.p>
 
       {/* Logo abajo a la derecha */}

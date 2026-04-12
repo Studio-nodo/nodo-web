@@ -133,25 +133,27 @@ html {
 }
 
 /* ── Gradient text ───────────────────────────────────────────────────────────
-   Mobile: solid white always (gradient clip is unreliable on Android/iOS
-   inside Framer Motion composited layers — appears black on some devices).
-   Desktop (≥768px): gradient clip with own compositing layer via translateZ.
+   Solid white fallback first (safe for all browsers).
+   Progressive enhancement: apply gradient clip only when supported.
+   transform: translateZ(0) promotes the element to its own compositing layer,
+   which fixes the iOS Safari / Android Chrome bug where gradient text turns
+   black/transparent when the parent element has will-change: transform.
 ── */
 .text-gradient {
   color: #ffffff;
 }
 
-@media (min-width: 768px) {
-  @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
-    .text-gradient {
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      position: relative;
-      z-index: 1;
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-    }
+@supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
+  .text-gradient {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    /* Own compositing layer — prevents gradient text from going black
+       when a parent Framer Motion element has will-change: transform */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
 

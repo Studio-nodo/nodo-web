@@ -91,8 +91,8 @@ export default function ContactSection() {
               <Image
                 src={contact.icon}
                 alt={contact.isInstagram ? "Instagram" : "Mail"}
-                width={contact.isInstagram ? 36 : 40}
-                height={contact.isInstagram ? 33 : 24}
+                fill
+                sizes="40px"
                 className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
               />
             </div>
@@ -137,7 +137,7 @@ export default function ContactSection() {
           width={80}
           height={59}
           className="object-contain"
-          style={{ filter: "brightness(0) invert(1)", opacity: 0.25 }}
+          style={{ filter: "brightness(0) invert(1)", opacity: 0.25, width: "80px", height: "auto" }}
         />
       </motion.div>
     </section>

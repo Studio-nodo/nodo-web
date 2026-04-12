@@ -52,7 +52,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
         >
-          Construimos experiencias digitales
+          Desarrollo web, IA y diseño digital para empresas
         </motion.p>
 
         {/* Scroll arrow */}

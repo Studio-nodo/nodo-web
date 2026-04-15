@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
-const stack = [
+const stack: { name: string; alt: string; src: string; whiteBg?: boolean }[] = [
   {
     name: "GitHub",
     alt: "GitHub — control de versiones y colaboración de código",

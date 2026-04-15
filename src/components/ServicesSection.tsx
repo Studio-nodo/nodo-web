@@ -28,9 +28,9 @@ const services = [
   {
     title: "AUTOMATIZACIÓN",
     category: "IA",
-    description: "Flujos con n8n y Make: leads, notificaciones y seguimiento automático.",
+    description: "Flujos a medida sobre infraestructura propia: leads, notificaciones y seguimiento automático.",
     imageSrc: "/original-designs/automatizacion.png",
-    imageAlt: "Automatización de Procesos de Negocio con n8n y Make - Studio Nodo",
+    imageAlt: "Automatización de Procesos de Negocio - Studio Nodo",
   },
   {
     title: "AGENTE IA",
@@ -89,10 +89,9 @@ export default function ServicesSection() {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.span
-          className="tracking-[10px] uppercase font-normal mb-4 block"
-          style={{ fontFamily: "'Sulphur Point', sans-serif", color: "#ffffff", fontSize: "clamp(14px, 1.2vw, 16px)" }}
-          initial={{ opacity: 0, letterSpacing: "15px" }}
-          whileInView={{ opacity: 1, letterSpacing: "10px" }}
+          className="tracking-[10px] uppercase font-normal mb-4 block section-label"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         >

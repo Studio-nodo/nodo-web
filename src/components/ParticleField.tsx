@@ -24,7 +24,8 @@ export default function ParticleField() {
 
     let animFrame: number;
     const particles: Particle[] = [];
-    const PARTICLE_COUNT = 60;
+    const isMobile = window.innerWidth < 768;
+    const PARTICLE_COUNT = isMobile ? 25 : 50;
 
     const resize = () => {
       canvas.width = window.innerWidth;

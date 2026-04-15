@@ -2,18 +2,27 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Mail } from "lucide-react";
+import type { ReactNode } from "react";
 
-const imgMail = "https://www.figma.com/api/mcp/asset/aba4daf7-ae2d-4eef-9bb5-e4db92b889e2";
-const imgInstagram = "https://www.figma.com/api/mcp/asset/3a3f9fb4-d0c3-4e8f-b92d-93b4535f45ff";
+function InstagramIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} style={style}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
-const contacts = [
+const contacts: { icon: ReactNode; text: string; href: string; isInstagram?: boolean }[] = [
   {
-    icon: imgMail,
+    icon: <Mail className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "rgba(255,255,255,0.7)" }} />,
     text: "contacto@studio-nodo.com",
     href: "mailto:contacto@studio-nodo.com",
   },
   {
-    icon: imgInstagram,
+    icon: <InstagramIcon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "rgba(255,255,255,0.7)" }} />,
     text: "studionodo.team",
     href: "https://www.instagram.com/studionodo.team/",
     isInstagram: true,
@@ -87,14 +96,8 @@ export default function ContactSection() {
             }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="flex-shrink-0 w-[40px] h-[40px] relative flex items-center justify-center">
-              <Image
-                src={contact.icon}
-                alt={contact.isInstagram ? "Instagram" : "Mail"}
-                fill
-                sizes="40px"
-                className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-              />
+            <div className="flex-shrink-0 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+              {contact.icon}
             </div>
 
             <span
@@ -111,35 +114,35 @@ export default function ContactSection() {
         ))}
       </div>
 
-      {/* Copyright */}
-      <motion.p
-        className="text-center text-white/25 text-sm mt-20 md:mt-24 tracking-wider w-full"
-        style={{ fontFamily: "'Roboto Condensed', sans-serif" }}
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        © 2026 studio-nodo.com
-      </motion.p>
+      {/* Footer semántico: copyright + logo */}
+      <footer className="w-full flex flex-col items-center mt-20 md:mt-24">
+        <motion.p
+          className="text-center text-white/25 text-sm tracking-wider w-full contact-copyright"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          © 2026 studio-nodo.com
+        </motion.p>
 
-      {/* Logo abajo a la derecha */}
-      <motion.div
-        className="w-full flex justify-end mt-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <Image
-          src="/logo.png"
-          alt="Studio Nodo"
-          width={80}
-          height={59}
-          className="object-contain"
-          style={{ filter: "brightness(0) invert(1)", opacity: 0.25, width: "80px", height: "auto" }}
-        />
-      </motion.div>
+        <motion.div
+          className="w-full flex justify-end mt-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Image
+            src="/logo.png"
+            alt="Studio Nodo - Agencia de Diseño Web y Automatización con IA en Buenos Aires"
+            width={80}
+            height={59}
+            className="object-contain"
+            style={{ filter: "brightness(0) invert(1)", opacity: 0.25, width: "80px", height: "auto" }}
+          />
+        </motion.div>
+      </footer>
     </section>
   );
 }

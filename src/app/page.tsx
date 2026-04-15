@@ -1,7 +1,9 @@
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import TechStackSection from "@/components/TechStackSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import ProcessSection from "@/components/ProcessSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import VisualEffects from "@/components/VisualEffects";
 
@@ -14,6 +16,8 @@ export default function Home() {
         <ServicesSection />
         <BenefitsSection />
         <ProcessSection />
+        <TechStackSection />
+        <FAQSection />
         <ContactSection />
       </div>
     </main>

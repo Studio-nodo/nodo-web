@@ -1,7 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { MorphingCardStack } from "@/components/ui/morphing-card-stack";
+
+const MorphingCardStack = dynamic(
+  () => import("@/components/ui/morphing-card-stack").then((m) => ({ default: m.MorphingCardStack })),
+  { ssr: false }
+);
 
 const benefits = [
   {

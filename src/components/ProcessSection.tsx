@@ -80,7 +80,7 @@ export default function ProcessSection() {
           const isRight = index % 2 !== 0;
           const isOpen = openIndex === index;
 
-          const titleBlock = (
+          const titleBlock = () => (
             <motion.div
               onClick={() => toggle(index)}
               role="button"
@@ -88,15 +88,11 @@ export default function ProcessSection() {
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") toggle(index); }}
               className="group w-full"
               style={{ cursor: "pointer" }}
-              whileHover={{ x: isRight ? 6 : -6 }}
+              whileHover={{ x: isRight ? -4 : 4 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Number + Title row */}
-              <div
-                className="flex items-center gap-3"
-                style={{ flexDirection: isRight ? "row" : "row-reverse" }}
-              >
-                {/* Number */}
+              {/* Number + Title — reversed for left-column (even) steps */}
+              <div className={`flex items-center gap-3${!isRight ? " flex-row-reverse" : ""}`}>
                 <span
                   style={{
                     fontFamily: "'Sulphur Point', sans-serif",
@@ -111,7 +107,7 @@ export default function ProcessSection() {
                 </span>
 
                 <h3
-                  className="flex-1 text-gradient"
+                  className={`flex-1 text-gradient${!isRight ? " text-right" : ""}`}
                   style={{
                     fontFamily: "'Sulphur Point', sans-serif",
                     fontSize: "clamp(17px, 2.4vw, 26px)",
@@ -120,7 +116,6 @@ export default function ProcessSection() {
                     backgroundImage: isOpen
                       ? "linear-gradient(90deg, rgba(255,255,255,0.8) 0%, #ffffff 40%, #ffffff 60%, rgba(255,255,255,0.8) 100%)"
                       : "linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0.5) 100%)",
-                    textAlign: isRight ? "left" : "right",
                     transition: "opacity 0.25s ease",
                   }}
                 >
@@ -128,20 +123,17 @@ export default function ProcessSection() {
                 </h3>
               </div>
 
-              {/* Short line under title only */}
+              {/* Separator */}
               <div
                 style={{
                   height: "1px",
-                  width: "45%",
+                  width: "100%",
                   marginTop: "12px",
-                  marginLeft: isRight ? 0 : "auto",
-                  marginRight: isRight ? "auto" : 0,
                   background: isOpen ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)",
                   transition: "background 0.3s ease",
                 }}
               />
 
-              {/* Description */}
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -152,16 +144,14 @@ export default function ProcessSection() {
                     style={{ overflow: "hidden" }}
                   >
                     <p
+                      className={!isRight ? "text-right" : ""}
                       style={{
                         fontFamily: "'Roboto Condensed', sans-serif",
-                        fontSize: "clamp(12px, 1.4vw, 16px)",
+                        fontSize: "clamp(13px, 1.4vw, 16px)",
                         color: "rgba(255,255,255,0.65)",
                         lineHeight: 1.7,
                         paddingTop: "12px",
                         paddingBottom: "18px",
-                        textAlign: isRight ? "left" : "right",
-                        maxWidth: "28ch",
-                        marginLeft: isRight ? 0 : "auto",
                         paddingRight: "8px",
                         paddingLeft: "8px",
                       }}
@@ -181,11 +171,12 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
-              className="grid items-start mb-6"
-              style={{ gridTemplateColumns: "1fr 1fr", gap: "0 8px" }}
+              className="grid items-start mb-6 grid-cols-2"
+              style={{ gap: "0 8px" }}
             >
-              <div className="pr-4">{!isRight && titleBlock}</div>
-              <div className="pl-4">{isRight && titleBlock}</div>
+              <div className={`px-1 ${isRight ? "col-start-2 pl-4" : "pr-4"}`}>
+                {titleBlock()}
+              </div>
             </motion.div>
           );
         })}

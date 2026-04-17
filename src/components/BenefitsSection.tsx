@@ -104,6 +104,15 @@ export default function BenefitsSection() {
         </h2>
       </motion.div>
 
+      {/* SEO: contenido indexable por crawlers */}
+      <ul className="sr-only">
+        {benefits.map((b) => (
+          <li key={b.id}>
+            <strong>{b.title}</strong>: {b.description}
+          </li>
+        ))}
+      </ul>
+
       {/* Card Stack */}
       <div className="w-full flex justify-center">
         <MorphingCardStack cards={benefits} />

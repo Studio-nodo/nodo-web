@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -134,33 +134,28 @@ export default function ProcessSection() {
                 }}
               />
 
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <p
-                      className={!isRight ? "text-right" : ""}
-                      style={{
-                        fontFamily: "'Roboto Condensed', sans-serif",
-                        fontSize: "clamp(13px, 1.4vw, 16px)",
-                        color: "rgba(255,255,255,0.65)",
-                        lineHeight: 1.7,
-                        paddingTop: "12px",
-                        paddingBottom: "18px",
-                        paddingRight: "8px",
-                        paddingLeft: "8px",
-                      }}
-                    >
-                      {step.description}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <motion.div
+                animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                initial={false}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                style={{ overflow: "hidden" }}
+              >
+                <p
+                  className={!isRight ? "text-right" : ""}
+                  style={{
+                    fontFamily: "'Roboto Condensed', sans-serif",
+                    fontSize: "clamp(13px, 1.4vw, 16px)",
+                    color: "rgba(255,255,255,0.65)",
+                    lineHeight: 1.7,
+                    paddingTop: "12px",
+                    paddingBottom: "18px",
+                    paddingRight: "8px",
+                    paddingLeft: "8px",
+                  }}
+                >
+                  {step.description}
+                </p>
+              </motion.div>
             </motion.div>
           );
 

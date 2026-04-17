@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -127,33 +127,28 @@ export default function FAQSection() {
                 </motion.span>
               </div>
 
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: "'Roboto Condensed', sans-serif",
-                        fontSize: "clamp(13px, 1.5vw, 17px)",
-                        color: "rgba(255,255,255,0.55)",
-                        lineHeight: 1.75,
-                        paddingTop: "12px",
-                        paddingBottom: "20px",
-                        paddingLeft: "clamp(16px, 5vw, 48px)",
-                        paddingRight: "clamp(16px, 5vw, 48px)",
-                        maxWidth: "62ch",
-                      }}
-                    >
-                      {faq.a}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <motion.div
+                animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                initial={false}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                style={{ overflow: "hidden" }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'Roboto Condensed', sans-serif",
+                    fontSize: "clamp(13px, 1.5vw, 17px)",
+                    color: "rgba(255,255,255,0.55)",
+                    lineHeight: 1.75,
+                    paddingTop: "12px",
+                    paddingBottom: "20px",
+                    paddingLeft: "clamp(16px, 5vw, 48px)",
+                    paddingRight: "clamp(16px, 5vw, 48px)",
+                    maxWidth: "62ch",
+                  }}
+                >
+                  {faq.a}
+                </p>
+              </motion.div>
             </motion.div>
           );
         })}

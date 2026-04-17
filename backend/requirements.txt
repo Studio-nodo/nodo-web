@@ -1,0 +1,12 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.8.0
+pydantic-settings==2.4.0
+pydantic[email]==2.8.0
+langchain==0.3.0
+langchain-community==0.3.0
+langchain-core==0.3.0
+langchain-google-genai==2.0.0
+# langchain-pinecone==0.2.0   # TODO: descomentar cuando se integre Pinecone
+# pinecone-client==5.0.0      # TODO: descomentar cuando se integre Pinecone
+python-dotenv==1.0.1

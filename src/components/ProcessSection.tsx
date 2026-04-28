@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -33,6 +33,8 @@ const steps = [
 
 export default function ProcessSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -48,12 +50,9 @@ export default function ProcessSection() {
       }}
     >
       {/* Header */}
-      <motion.div
-        className="text-center mb-24 md:mb-32 w-full"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      <div
+        className={`text-center mb-24 md:mb-32 w-full${mounted ? " fade-in-up" : ""}`}
+        style={mounted ? { animationDuration: "0.8s" } : {}}
       >
         <span
           className="tracking-[10px] uppercase font-normal mb-4 block"
@@ -72,7 +71,7 @@ export default function ProcessSection() {
         >
           Cómo trabajamos
         </h2>
-      </motion.div>
+      </div>
 
       {/* Steps */}
       <div className="w-full max-w-4xl flex flex-col">
@@ -91,7 +90,6 @@ export default function ProcessSection() {
               whileHover={{ x: isRight ? -4 : 4 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Number + Title — reversed for left-column (even) steps */}
               <div className={`flex items-center gap-3${!isRight ? " flex-row-reverse" : ""}`}>
                 <span
                   style={{
@@ -123,7 +121,6 @@ export default function ProcessSection() {
                 </h3>
               </div>
 
-              {/* Separator */}
               <div
                 style={{
                   height: "1px",
@@ -160,19 +157,21 @@ export default function ProcessSection() {
           );
 
           return (
-            <motion.div
+            <div
               key={step.number}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
               className="grid items-start mb-6 grid-cols-2"
               style={{ gap: "0 8px" }}
             >
-              <div className={`px-1 ${isRight ? "col-start-2 pl-4" : "pr-4"}`}>
+              <div
+                style={{
+                  gridColumnStart: isRight ? 2 : 1,
+                  paddingLeft: isRight ? "16px" : "4px",
+                  paddingRight: isRight ? "4px" : "16px",
+                }}
+              >
                 {titleBlock()}
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>

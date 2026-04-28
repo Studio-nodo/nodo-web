@@ -1,7 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 
 const MorphingCardStack = dynamic(
   () => import("@/components/ui/morphing-card-stack").then((m) => ({ default: m.MorphingCardStack })),
@@ -68,6 +68,9 @@ const benefits = [
 ];
 
 export default function BenefitsSection() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section
       id="beneficios"
@@ -78,12 +81,9 @@ export default function BenefitsSection() {
       }}
     >
       {/* Header */}
-      <motion.div
-        className="text-center mb-24 md:mb-32 w-full"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      <div
+        className={`text-center mb-24 md:mb-32 w-full${mounted ? " fade-in-up" : ""}`}
+        style={mounted ? { animationDuration: "0.8s" } : {}}
       >
         <span
           className="tracking-[10px] uppercase font-normal mb-4 block"
@@ -102,7 +102,7 @@ export default function BenefitsSection() {
         >
           Por qué elegirnos
         </h2>
-      </motion.div>
+      </div>
 
       {/* SEO: contenido indexable por crawlers */}
       <ul className="sr-only">

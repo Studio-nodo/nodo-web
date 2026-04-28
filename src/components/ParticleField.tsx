@@ -16,6 +16,8 @@ export default function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -23,9 +25,15 @@ export default function ParticleField() {
     if (!ctx) return;
 
     let animFrame: number;
-    const particles: Particle[] = [];
+    let lastTime = 0;
+    const TARGET_FPS = 30;
+    const FRAME_MS = 1000 / TARGET_FPS;
+
     const isMobile = window.innerWidth < 768;
-    const PARTICLE_COUNT = isMobile ? 25 : 50;
+    const PARTICLE_COUNT = isMobile ? 20 : 40;
+    const CONNECT_DIST = isMobile ? 0 : 100; // no connections on mobile
+
+    const particles: Particle[] = [];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -43,48 +51,58 @@ export default function ParticleField() {
     });
 
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push(createParticle());
     }
 
-    const draw = () => {
+    const draw = (timestamp: number) => {
+      if (document.hidden) {
+        animFrame = requestAnimationFrame(draw);
+        return;
+      }
+
+      if (timestamp - lastTime < FRAME_MS) {
+        animFrame = requestAnimationFrame(draw);
+        return;
+      }
+      lastTime = timestamp;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((p) => {
-        // Move
+      for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
         p.opacity += p.opacitySpeed;
 
-        // Bounds
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
         if (p.opacity <= 0.05 || p.opacity >= 0.6) p.opacitySpeed *= -1;
 
-        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(180, 200, 255, ${p.opacity})`;
         ctx.fill();
-      });
+      }
 
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(150, 180, 255, ${0.08 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+      if (CONNECT_DIST > 0) {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < CONNECT_DIST * CONNECT_DIST) {
+              const dist = Math.sqrt(distSq);
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(150, 180, 255, ${0.08 * (1 - dist / CONNECT_DIST)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
           }
         }
       }
@@ -92,7 +110,7 @@ export default function ParticleField() {
       animFrame = requestAnimationFrame(draw);
     };
 
-    draw();
+    animFrame = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(animFrame);

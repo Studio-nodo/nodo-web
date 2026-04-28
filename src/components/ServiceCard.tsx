@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface ServiceCardProps {
@@ -17,22 +16,18 @@ interface ServiceCardProps {
 export default function ServiceCard({ title, category, description, imageSrc, imageAlt, index, imagePosition = "center" }: ServiceCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const springTransition = "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
   const imageTransform = isHovered && !isFlipped
     ? "translateY(-10px) scale(1.12)"
     : "translateY(0px) scale(1)";
 
-  const isEven = index % 2 === 0;
-  const enterX = isEven ? -80 : 80;
-
   return (
-    <motion.div
-      className="w-full flex justify-center px-4 md:px-6"
-      initial={{ opacity: 0, x: enterX }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
+    <div
+      className={`w-full flex justify-center px-4 md:px-6${mounted ? " fade-in-up" : ""}`}
+      style={mounted ? { animationDelay: `${index * 80}ms` } : {}}
     >
       <div
         className="w-full max-w-3xl cursor-pointer"
@@ -41,7 +36,7 @@ export default function ServiceCard({ title, category, description, imageSrc, im
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Flip container — pure CSS, no framer-motion transform */}
+        {/* Flip container */}
         <div
           style={{
             transformStyle: "preserve-3d",
@@ -73,7 +68,6 @@ export default function ServiceCard({ title, category, description, imageSrc, im
               overflow: "hidden",
             }}
           >
-            {/* Image with CSS bounce on card hover */}
             <div
               style={{
                 flexShrink: 0,
@@ -108,7 +102,6 @@ export default function ServiceCard({ title, category, description, imageSrc, im
               {title}
             </h3>
 
-            {/* Category pill */}
             <span
               style={{
                 flexShrink: 0,
@@ -181,11 +174,10 @@ export default function ServiceCard({ title, category, description, imageSrc, im
             >
               {description}
             </p>
-
           </div>
 
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

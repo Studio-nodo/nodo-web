@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const faqs = [
@@ -28,14 +28,12 @@ const faqs = [
     q: "El SEO está incluido en el desarrollo web?",
     a: "Sí. Todos nuestros proyectos web incluyen SEO técnico base: estructura de encabezados optimizada, metadatos, schema markup con JSON-LD, velocidad de carga y sitemap. Para estrategias de contenido y link building ofrecemos consultoría adicional.",
   },
-  {
-    q: "Trabajan con empresas de todo el país o solo en Buenos Aires?",
-    a: "Trabajamos de forma remota con empresas de toda Argentina. Estamos basados en Buenos Aires y también hemos colaborado con clientes del exterior.",
-  },
 ];
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <section
@@ -47,12 +45,9 @@ export default function FAQSection() {
       }}
     >
       {/* Header */}
-      <motion.div
-        className="text-center mb-16 md:mb-20 w-full"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      <div
+        className={`text-center mb-16 md:mb-20 w-full${mounted ? " fade-in-up" : ""}`}
+        style={mounted ? { animationDuration: "0.8s" } : {}}
       >
         <span
           className="tracking-[10px] uppercase font-normal mb-4 block"
@@ -71,19 +66,17 @@ export default function FAQSection() {
         >
           Preguntas frecuentes
         </h2>
-      </motion.div>
+      </div>
 
       {/* FAQ List */}
       <div className="w-full max-w-3xl flex flex-col">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
           return (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+              className={mounted ? "fade-in-up" : ""}
+              style={mounted ? { animationDelay: `${index * 50}ms` } : {}}
             >
               <div
                 role="button"
@@ -149,7 +142,7 @@ export default function FAQSection() {
                   {faq.a}
                 </p>
               </motion.div>
-            </motion.div>
+            </div>
           );
         })}
       </div>

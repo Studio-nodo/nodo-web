@@ -8,7 +8,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
       <div
-        className="relative z-10 text-center px-5 sm:px-8 w-full max-w-5xl mx-auto mt-16"
+        className="relative z-10 text-center px-5 sm:px-8 w-full max-w-[1800px] mx-auto mt-16"
       >
         {/* Headline */}
         <div className="mb-4">

@@ -1,7 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
 const stack: { name: string; alt: string; src: string; whiteBg?: boolean }[] = [
@@ -42,13 +42,12 @@ const stack: { name: string; alt: string; src: string; whiteBg?: boolean }[] = [
   },
 ];
 
-/* 4 copies so the strip is always ≥ 2× the widest viewport.
-   translateX(-50%) shifts exactly 2 copies — the remaining 2 fill the
-   right edge at all times. Each item uses marginRight (not gap) so the
-   50% split is pixel-exact regardless of item count. */
 const doubled = [...stack, ...stack, ...stack, ...stack];
 
 export default function TechStackSection() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section
       id="stack"
@@ -60,12 +59,14 @@ export default function TechStackSection() {
       }}
     >
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={{ textAlign: "center", marginBottom: "clamp(48px, 5vw, 80px)", padding: "0 20px" }}
+      <div
+        className={mounted ? "fade-in-up" : ""}
+        style={{
+          textAlign: "center",
+          marginBottom: "clamp(48px, 5vw, 80px)",
+          padding: "0 20px",
+          ...(mounted ? { animationDuration: "0.8s" } : {}),
+        }}
       >
         <span
           style={{
@@ -107,9 +108,9 @@ export default function TechStackSection() {
         >
           Las herramientas con las que construimos soluciones de ingeniería de software, automatizaciones con IA y diseño web.
         </p>
-      </motion.div>
+      </div>
 
-      {/* Slider — CSS marquee with doubled list for seamless circular loop */}
+      {/* Slider */}
       <div className="relative overflow-hidden" role="img" aria-label="Carrusel de tecnologías: GitHub, Vercel, Cloudflare, Railway, Claude AI, VS Code, Adobe Creative Suite">
         <ProgressiveBlur
           className="pointer-events-none absolute top-0 left-0 h-full w-32 z-10"

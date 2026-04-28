@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import ServiceCard from "./ServiceCard";
 
 const services = [
@@ -71,6 +71,9 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section
       id="servicios"
@@ -81,22 +84,16 @@ export default function ServicesSection() {
       }}
     >
       {/* Header */}
-      <motion.div
-        className="text-center mb-24 md:mb-32 w-full"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      <div
+        className={`text-center mb-24 md:mb-32 w-full${mounted ? " fade-in-up" : ""}`}
+        style={mounted ? { animationDuration: "0.9s" } : {}}
       >
-        <motion.span
-          className="tracking-[10px] uppercase font-normal mb-4 block section-label"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        <span
+          className={`tracking-[10px] uppercase font-normal mb-4 block section-label${mounted ? " fade-in-up" : ""}`}
+          style={mounted ? { animationDelay: "0.2s" } : {}}
         >
           SERVICIOS
-        </motion.span>
+        </span>
         <h2
           className="font-bold mt-4 text-gradient"
           style={{
@@ -108,7 +105,7 @@ export default function ServicesSection() {
         >
           Nuestros servicios
         </h2>
-      </motion.div>
+      </div>
 
       {/* Cards verticales */}
       <div className="w-full flex flex-col items-center gap-7 md:gap-9">

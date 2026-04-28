@@ -19,10 +19,10 @@ const robotoCondensed = Roboto_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://studio-nodo.com"),
   title: {
-    default: "Studio Nodo | Diseño Web, IA & Automatizaciones en Buenos Aires",
+    default: "Studio Nodo | Diseño Web, Branding & Automatizaciones con IA",
     template: "%s | Studio Nodo",
   },
-  description: "Impulsamos tu negocio con tecnología de punta. Expertos en desarrollo con Next.js, integración de agentes de IA (RAG) y automatización de procesos para maximizar tu eficiencia operativa.",
+  description: "Impulsamos tu marca con soluciones digitales de alto impacto. Expertos en diseño web, identidad visual (branding), integraciones de inteligencia artificial y automatización de procesos para empresas. Llevamos la eficiencia de tu negocio al siguiente nivel con tecnología avanzada y diseño estratégico.",
   keywords: [
     "diseño web Buenos Aires",
     "agencia de ingeniería de software",
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     locale: "es_AR",
     url: "https://studio-nodo.com",
     siteName: "Studio Nodo",
-    title: "Studio Nodo | Diseño Web, IA & Automatizaciones en Buenos Aires",
-    description: "Impulsamos tu negocio con tecnología de punta. Expertos en desarrollo con Next.js, integración de agentes de IA (RAG) y automatización de procesos para maximizar tu eficiencia operativa.",
+    title: "Studio Nodo | Diseño Web, Branding & Automatizaciones con IA",
+    description: "Impulsamos tu marca con soluciones digitales de alto impacto. Expertos en diseño web, identidad visual (branding), integraciones de inteligencia artificial y automatización de procesos para empresas.",
     images: [
       {
         url: "/og-image.png",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Nodo | Diseño Web, IA & Automatizaciones en Buenos Aires",
-    description: "Impulsamos tu negocio con tecnología de punta. Expertos en desarrollo con Next.js, integración de agentes de IA (RAG) y automatización de procesos.",
+    title: "Studio Nodo | Diseño Web, Branding & Automatizaciones con IA",
+    description: "Impulsamos tu marca con soluciones digitales de alto impacto. Expertos en diseño web, branding, integraciones de IA y automatización de procesos para empresas.",
     images: [
       {
         url: "/og-image.png",
@@ -262,14 +262,6 @@ export default function RootLayout({
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Sí. Todos nuestros proyectos incluyen SEO técnico base: encabezados optimizados, metadatos, schema markup JSON-LD, velocidad de carga y sitemap.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "¿Trabajan con empresas de todo el país o solo en Buenos Aires?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Trabajamos de forma remota con empresas de toda Argentina. Estamos basados en Buenos Aires y también hemos colaborado con clientes del exterior.",
                   },
                 },
               ],

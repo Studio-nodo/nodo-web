@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Mail } from "lucide-react";
@@ -15,21 +16,25 @@ function InstagramIcon({ className, style }: { className?: string; style?: React
   );
 }
 
-const contacts: { icon: ReactNode; text: string; href: string; isInstagram?: boolean }[] = [
+const contacts: { icon: ReactNode; text: string; href: string; isExternal?: boolean }[] = [
   {
     icon: <Mail className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "rgba(255,255,255,0.7)" }} />,
     text: "contacto@studio-nodo.com",
-    href: "mailto:contacto@studio-nodo.com",
+    href: "https://mail.google.com/mail/?view=cm&to=contacto@studio-nodo.com",
+    isExternal: true,
   },
   {
     icon: <InstagramIcon className="w-6 h-6 sm:w-7 sm:h-7" style={{ color: "rgba(255,255,255,0.7)" }} />,
     text: "studionodo.team",
     href: "https://www.instagram.com/studionodo.team/",
-    isInstagram: true,
+    isExternal: true,
   },
 ];
 
 export default function ContactSection() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section
       id="contacto"
@@ -40,12 +45,9 @@ export default function ContactSection() {
       }}
     >
       {/* Header */}
-      <motion.div
-        className="text-center mb-24 md:mb-32 w-full"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      <div
+        className={`text-center mb-24 md:mb-32 w-full${mounted ? " fade-in-up" : ""}`}
+        style={mounted ? { animationDuration: "0.8s" } : {}}
       >
         <span
           className="text-xs md:text-sm tracking-[10px] text-white/35 uppercase font-light mb-4 block"
@@ -64,17 +66,17 @@ export default function ContactSection() {
         >
           Hablemos
         </h2>
-      </motion.div>
+      </div>
 
-      {/* Contact cards */}
+      {/* Contact cards — motion.a kept for whileHover/whileTap, entrance via CSS */}
       <div className="flex flex-col items-center gap-4 md:gap-5 w-full">
         {contacts.map((contact, index) => (
           <motion.a
             key={contact.text}
             href={contact.href}
-            target={contact.isInstagram ? "_blank" : undefined}
-            rel={contact.isInstagram ? "noopener noreferrer" : undefined}
-            className="flex items-center gap-4 md:gap-5 px-6 py-4 rounded-xl group cursor-pointer"
+            target={contact.isExternal ? "_blank" : undefined}
+            rel={contact.isExternal ? "noopener noreferrer" : undefined}
+            className={`flex items-center gap-4 md:gap-5 px-6 py-4 rounded-xl group cursor-pointer${mounted ? " fade-in-up" : ""}`}
             style={{
               textDecoration: "none",
               background: "linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03))",
@@ -82,11 +84,8 @@ export default function ContactSection() {
               backdropFilter: "blur(12px)",
               width: "fit-content",
               maxWidth: "calc(100vw - 48px)",
+              ...(mounted ? { animationDelay: `${0.15 * index * 1000}ms` } : {}),
             }}
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 * index, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06))",
               borderColor: "rgba(255,255,255,0.25)",
@@ -114,24 +113,18 @@ export default function ContactSection() {
         ))}
       </div>
 
-      {/* Footer semántico: copyright + logo */}
+      {/* Footer */}
       <footer className="w-full flex flex-col items-center mt-20 md:mt-24">
-        <motion.p
-          className="text-center text-white/25 text-sm tracking-wider w-full contact-copyright"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        <p
+          className={`text-center text-white/25 text-sm tracking-wider w-full contact-copyright${mounted ? " fade-in-up" : ""}`}
+          style={mounted ? { animationDelay: "0.6s", animationDuration: "0.8s" } : {}}
         >
           © 2026 studio-nodo.com
-        </motion.p>
+        </p>
 
-        <motion.div
-          className="w-full flex justify-end mt-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        <div
+          className={`w-full flex justify-end mt-10${mounted ? " fade-in-up" : ""}`}
+          style={mounted ? { animationDelay: "0.8s", animationDuration: "0.8s" } : {}}
         >
           <Image
             src="/logo.png"
@@ -141,7 +134,7 @@ export default function ContactSection() {
             className="object-contain"
             style={{ filter: "brightness(0) invert(1)", opacity: 0.25, width: "80px", height: "auto" }}
           />
-        </motion.div>
+        </div>
       </footer>
     </section>
   );
